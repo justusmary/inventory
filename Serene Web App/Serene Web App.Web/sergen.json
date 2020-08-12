@@ -1,10 +1,36 @@
-﻿{
+{
   "RootNamespace": "Serene_Web_App",
   "ServerTypings": {
     "Assemblies": [],
     "LocalTexts": true
   },
-  "Connections": [],
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "inv.Category",
+          "Identifier": "Category",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "inv.Product",
+          "Identifier": "Product",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "inv.Supplier",
+          "Identifier": "Supplier",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
   "BaseRowClasses": [],
-  "RemoveForeignFields": []
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
 }

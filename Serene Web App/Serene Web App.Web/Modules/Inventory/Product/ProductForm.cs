@@ -15,7 +15,7 @@ namespace Serene_Web_App.Inventory.Forms
     {
         public String Name { get; set; }
         public Int32 Quantity { get; set; }
-        public Int32 Unit { get; set; }
+        public String Unit { get; set; }
         public Int32 Price { get; set; }
         public Int32 CategoryId { get; set; }
     }

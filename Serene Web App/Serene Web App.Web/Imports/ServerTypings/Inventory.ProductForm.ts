@@ -2,7 +2,7 @@
     export interface ProductForm {
         Name: Serenity.StringEditor;
         Quantity: Serenity.IntegerEditor;
-        Unit: Serenity.IntegerEditor;
+        Unit: Serenity.StringEditor;
         Price: Serenity.IntegerEditor;
         CategoryId: Serenity.LookupEditor;
     }
@@ -25,7 +25,7 @@
                 Q.initFormType(ProductForm, [
                     'Name', w0,
                     'Quantity', w1,
-                    'Unit', w1,
+                    'Unit', w0,
                     'Price', w1,
                     'CategoryId', w2
                 ]);

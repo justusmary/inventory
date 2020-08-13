@@ -16,7 +16,7 @@ namespace Serene_Web_App.Migrations.DefaultDB
                     .Identity().PrimaryKey().NotNullable()
                 .WithColumn("Name").AsString(200).NotNullable()
                 .WithColumn("Quantity").AsInt32().Nullable()
-                .WithColumn("Unit").AsInt32().Nullable()
+                .WithColumn("Unit").AsString(20).Nullable()
                 .WithColumn("Price").AsInt32().Nullable();
         }
 

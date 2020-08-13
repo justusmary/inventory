@@ -70,6 +70,11 @@ namespace MVC
                 public const string SupplierIndex = "~/Modules/Inventory/Supplier/SupplierIndex.cshtml";
             }
 
+            public static class SupplierProduct
+            {
+                public const string SupplierProductIndex = "~/Modules/Inventory/SupplierProduct/SupplierProductIndex.cshtml";
+            }
+
         }
 
         public static class Membership

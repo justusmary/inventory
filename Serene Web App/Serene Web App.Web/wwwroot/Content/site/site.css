@@ -8110,3 +8110,9 @@ section.content > .s-DataGrid {
 .s-Inventory-SupplierDialog .caption {
   width: 150px;
 }
+.s-Inventory-SupplierProductDialog > .size {
+  width: 650px;
+}
+.s-Inventory-SupplierProductDialog .caption {
+  width: 150px;
+}

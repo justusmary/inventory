@@ -21,7 +21,7 @@ namespace Serene_Web_App.Inventory.Columns
         [Width(100), QuickFilter]
         public String CategoryName { get; set; }
         public Int32 Quantity { get; set; }
-        public Int32 Unit { get; set; }
+        public String Unit { get; set; }
         public Int32 Price { get; set; }
 
         [Width(100), QuickFilter]

@@ -13,6 +13,7 @@ namespace Serene_Web_App.Inventory.Entities
     [DisplayName("Products"), InstanceName("Product")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("Inventory.Product")]
     public sealed class ProductRow : Row, IIdRow, INameRow
     {
         [DisplayName("Product Id"), Identity]
@@ -52,7 +53,7 @@ namespace Serene_Web_App.Inventory.Entities
         }
 
         [DisplayName("Unit")]
-        public Int32? Unit
+        public String? Unit
         {
             get { return Fields.Unit[this]; }
             set { Fields.Unit[this] = value; }
@@ -102,7 +103,7 @@ namespace Serene_Web_App.Inventory.Entities
             public Int32Field ProductId;
             public StringField Name;
             public Int32Field Quantity;
-            public Int32Field Unit;
+            public StringField Unit;
             public Int32Field Price;
             public readonly Int32Field CategoryId;
             public readonly StringField CategoryName;

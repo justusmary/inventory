@@ -47,7 +47,7 @@ namespace Serene_Web_App
 
                 public static class ResetPassword
                 {
-                    public static LocalText EmailSubject = "Reset Your Serene_Web_App Password";
+                    public static LocalText EmailSubject = "Reset Your Inventory App Password";
                     public static LocalText FormTitle = "Reset Password";
                     public static LocalText SubmitButton = "Reset Password";
                     public static LocalText Success = "Your password is changed. Please login with your new password.";
@@ -56,7 +56,7 @@ namespace Serene_Web_App
 
                 public static class Login
                 {
-                    public static LocalText FormTitle = "Welcome to SERENE (Serenity Application Template)";
+                    public static LocalText FormTitle = "Welcome to Inventory App (Serenity Application Template)";
                     public static LocalText SignInButton = "Sign In";
                     public static LocalText ForgotPassword = "Forgot password?";
                     public static LocalText SignUpButton = "Register a new account";
@@ -68,11 +68,11 @@ namespace Serene_Web_App
 
                 public static class SignUp
                 {
-                    public static LocalText ActivateEmailSubject = "Activate Your Serene_Web_App Account";
+                    public static LocalText ActivateEmailSubject = "Activate Your Inventory App Account";
                     public static LocalText ActivationCompleteMessage = "Your account is now activated. " +
                         "Use the e-mail and password you used while signing up to login.";
                     public static LocalText FormInfo = "Enter your details to create a free account.";
-                    public static LocalText FormTitle = "Sign up for Serene_Web_App";
+                    public static LocalText FormTitle = "Sign up for Inventory App";
                     public static LocalText SubmitButton = "Sign Up";
                     public static LocalText Success = "An e-mail with instructions to active your account is " +
                         "sent to your e-mail address. Please check your e-mails.";
@@ -92,7 +92,7 @@ namespace Serene_Web_App
         public static class Navigation
         {
             public static LocalText LogoutLink = "Logout";
-            public static LocalText SiteTitle = "Serene_Web_App";
+            public static LocalText SiteTitle = "Inventory App";
         }
 
         public static class Site

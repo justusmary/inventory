@@ -15,6 +15,7 @@ namespace Serene_Web_App.Inventory.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 SupplierProductId { get; set; }
+        [EditLink]
         public String SupplierName { get; set; }
         public String ProductName { get; set; }
     }

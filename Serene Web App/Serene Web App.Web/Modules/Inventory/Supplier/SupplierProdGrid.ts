@@ -13,18 +13,6 @@ namespace Serene_Web_App.Inventory {
             super(container);
         }
 
-        protected getButtons() {
-            return null;
-        }
-
-        protected getInitialTitle() {
-            return null;
-        }
-
-        protected usePager() {
-            return false;
-        }
-
         protected getGridCanLoad() {
             return this.supplierID != null;
         }

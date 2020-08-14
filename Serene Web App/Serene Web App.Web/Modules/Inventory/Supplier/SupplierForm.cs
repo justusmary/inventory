@@ -13,10 +13,11 @@ namespace Serene_Web_App.Inventory.Forms
     [BasedOnRow(typeof(Entities.SupplierRow), CheckNames = true)]
     public class SupplierForm
     {
+        public String PrimaryImage { get; set; }
         public String Name { get; set; }
         public String Phone { get; set; }
 
-        [TextAreaEditor(Rows = 3)]
+        [TextAreaEditor(Rows = 4)]
         public String Address { get; set; }
     }
 }

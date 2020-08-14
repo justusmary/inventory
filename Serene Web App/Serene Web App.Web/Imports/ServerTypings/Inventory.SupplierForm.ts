@@ -1,5 +1,6 @@
 ﻿namespace Serene_Web_App.Inventory {
     export interface SupplierForm {
+        PrimaryImage: Serenity.ImageUploadEditor;
         Name: Serenity.StringEditor;
         Phone: Serenity.StringEditor;
         Address: Serenity.TextAreaEditor;
@@ -16,13 +17,15 @@
                 SupplierForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
-                var w1 = s.TextAreaEditor;
+                var w0 = s.ImageUploadEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.TextAreaEditor;
 
                 Q.initFormType(SupplierForm, [
-                    'Name', w0,
-                    'Phone', w0,
-                    'Address', w1
+                    'PrimaryImage', w0,
+                    'Name', w1,
+                    'Phone', w1,
+                    'Address', w2
                 ]);
             }
         }

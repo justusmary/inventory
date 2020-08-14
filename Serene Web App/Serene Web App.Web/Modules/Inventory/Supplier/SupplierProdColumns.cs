@@ -7,7 +7,7 @@
     [BasedOnRow(typeof(Entities.SupplierProductRow))]
     public class SupplierProdColumns
     {
-        [Width(220)]
+        [Width(220), EditLink]
         public String ProductName { get; set; }
     }
 }

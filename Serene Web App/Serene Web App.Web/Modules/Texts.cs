@@ -56,7 +56,7 @@ namespace Serene_Web_App
 
                 public static class Login
                 {
-                    public static LocalText FormTitle = "Welcome to Inventory App (Serenity Application Template)";
+                    public static LocalText FormTitle = "Welcome to Inventory App";
                     public static LocalText SignInButton = "Sign In";
                     public static LocalText ForgotPassword = "Forgot password?";
                     public static LocalText SignUpButton = "Register a new account";
@@ -109,8 +109,7 @@ namespace Serene_Web_App
             public static class Dashboard
             {
                 public static LocalText ContentDescription =
-                    "a sample with random data (from free <em><a href = \"https://almsaeedstudio.com/\" target= \"_blank\">" +
-                    "AdminLTE theme</a></em>)";
+                    "Realtime data from inventory";
             }
 
             public static class BasicProgressDialog

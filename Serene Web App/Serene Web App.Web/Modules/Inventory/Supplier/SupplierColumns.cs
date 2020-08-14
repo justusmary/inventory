@@ -13,11 +13,12 @@ namespace Serene_Web_App.Inventory.Columns
     [BasedOnRow(typeof(Entities.SupplierRow), CheckNames = true)]
     public class SupplierColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 SupplierId { get; set; }
         [EditLink]
         public String Name { get; set; }
         public String Phone { get; set; }
+        [Width(300)]
         public String Address { get; set; }
     }
 }

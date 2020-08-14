@@ -16,6 +16,14 @@ namespace Serene_Web_App.Inventory.Entities
     [LookupScript("Inventory.Product")]
     public sealed class ProductRow : Row, IIdRow, INameRow
     {
+        [DisplayName("Primary Image"), Size(100),
+         ImageUploadEditor(FilenameFormat = "Product/PrimaryImage/~")]
+        public string PrimaryImage
+        {
+            get { return Fields.PrimaryImage[this]; }
+            set { Fields.PrimaryImage[this] = value; }
+        }
+
         [DisplayName("Product Id"), Identity]
         public Int32? ProductId
         {
@@ -109,6 +117,7 @@ namespace Serene_Web_App.Inventory.Entities
             public readonly StringField CategoryName;
             public readonly Int32Field SupplierId;
             public readonly StringField SupplierName;
+            public readonly StringField PrimaryImage;
         }
     }
 }

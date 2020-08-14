@@ -4,6 +4,7 @@
         Name?: string;
         Phone?: string;
         Address?: string;
+        PrimaryImage?: string;
     }
 
     export namespace SupplierRow {
@@ -24,7 +25,8 @@
             SupplierId = "SupplierId",
             Name = "Name",
             Phone = "Phone",
-            Address = "Address"
+            Address = "Address",
+            PrimaryImage = "PrimaryImage"
         }
     }
 }

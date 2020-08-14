@@ -562,11 +562,13 @@ declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
     interface ProductForm {
+        PrimaryImage: Serenity.ImageUploadEditor;
         Name: Serenity.StringEditor;
         Quantity: Serenity.IntegerEditor;
         Unit: Serenity.StringEditor;
         Price: Serenity.IntegerEditor;
         CategoryId: Serenity.LookupEditor;
+        SupplierId: Serenity.LookupEditor;
     }
     class ProductForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -585,6 +587,7 @@ declare namespace Serene_Web_App.Inventory {
         CategoryName?: string;
         SupplierId?: number;
         SupplierName?: string;
+        PrimaryImage?: string;
     }
     namespace ProductRow {
         const idProperty = "ProductId";
@@ -605,7 +608,8 @@ declare namespace Serene_Web_App.Inventory {
             CategoryId = "CategoryId",
             CategoryName = "CategoryName",
             SupplierId = "SupplierId",
-            SupplierName = "SupplierName"
+            SupplierName = "SupplierName",
+            PrimaryImage = "PrimaryImage"
         }
     }
 }
@@ -630,6 +634,7 @@ declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
     interface SupplierForm {
+        PrimaryImage: Serenity.ImageUploadEditor;
         Name: Serenity.StringEditor;
         Phone: Serenity.StringEditor;
         Address: Serenity.TextAreaEditor;
@@ -665,7 +670,7 @@ declare namespace Serene_Web_App.Inventory {
         SupplierAddress?: string;
         ProductName?: string;
         ProductQuantity?: number;
-        ProductUnit?: number;
+        ProductUnit?: string;
         ProductPrice?: number;
         ProductSupplierId?: number;
         ProductCategoryId?: number;
@@ -716,6 +721,7 @@ declare namespace Serene_Web_App.Inventory {
         Name?: string;
         Phone?: string;
         Address?: string;
+        PrimaryImage?: string;
     }
     namespace SupplierRow {
         const idProperty = "SupplierId";
@@ -731,7 +737,8 @@ declare namespace Serene_Web_App.Inventory {
             SupplierId = "SupplierId",
             Name = "Name",
             Phone = "Phone",
-            Address = "Address"
+            Address = "Address",
+            PrimaryImage = "PrimaryImage"
         }
     }
 }
@@ -1385,9 +1392,6 @@ declare namespace Serene_Web_App.Inventory {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-        protected getButtons(): any;
-        protected getInitialTitle(): any;
-        protected usePager(): boolean;
         protected getGridCanLoad(): boolean;
         private _supplierID;
         get supplierID(): number;

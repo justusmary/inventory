@@ -8094,18 +8094,19 @@ section.content > .s-DataGrid {
 }
 .s-Inventory-ProductDialog > .size {
   width: 650px;
+  height: 500px;
 }
 .s-Inventory-ProductDialog .caption {
   width: 150px;
 }
 .s-Inventory-CategoryDialog > .size {
-  width: 650px;
+  width: 450px;
 }
 .s-Inventory-CategoryDialog .caption {
   width: 150px;
 }
 .s-Inventory-SupplierDialog > .size {
-  width: 650px;
+  width: 550px;
 }
 .s-Inventory-SupplierDialog .caption {
   width: 150px;
@@ -8114,5 +8115,11 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Inventory-SupplierProductDialog .caption {
+  width: 150px;
+}
+.s-Inventory-SupplierProdDialog > .size {
+  width: 500px;
+}
+.s-Inventory-SupplierProdDialog .caption {
   width: 150px;
 }

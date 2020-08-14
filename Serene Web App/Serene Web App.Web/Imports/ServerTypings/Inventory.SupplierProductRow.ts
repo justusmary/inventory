@@ -8,7 +8,7 @@
         SupplierAddress?: string;
         ProductName?: string;
         ProductQuantity?: number;
-        ProductUnit?: number;
+        ProductUnit?: string;
         ProductPrice?: number;
         ProductSupplierId?: number;
         ProductCategoryId?: number;

@@ -13,18 +13,19 @@ namespace Serene_Web_App.Inventory.Columns
     [BasedOnRow(typeof(Entities.ProductRow), CheckNames = true)]
     public class ProductColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 ProductId { get; set; }
-        [EditLink]
+        [EditLink, Width(200)]
         public String Name { get; set; }
-
-        [Width(100), QuickFilter]
+        [Width(150), QuickFilter]
         public String CategoryName { get; set; }
+        [Width(100)]
         public Int32 Quantity { get; set; }
+        [Width(100)]
         public String Unit { get; set; }
+        [Width(100)]
         public Int32 Price { get; set; }
-
-        [Width(100), QuickFilter]
+        [Width(200), QuickFilter]
         public String SupplierName { get; set; }
     }
 }

@@ -9,6 +9,7 @@
         CategoryName?: string;
         SupplierId?: number;
         SupplierName?: string;
+        PrimaryImage?: string;
     }
 
     export namespace ProductRow {
@@ -34,7 +35,8 @@
             CategoryId = "CategoryId",
             CategoryName = "CategoryName",
             SupplierId = "SupplierId",
-            SupplierName = "SupplierName"
+            SupplierName = "SupplierName",
+            PrimaryImage = "PrimaryImage"
         }
     }
 }

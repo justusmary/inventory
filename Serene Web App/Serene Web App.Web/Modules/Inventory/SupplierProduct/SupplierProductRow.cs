@@ -74,7 +74,7 @@ namespace Serene_Web_App.Inventory.Entities
         }
 
         [DisplayName("Product Unit"), Expression("jProduct.[Unit]")]
-        public Int32? ProductUnit
+        public String ProductUnit
         {
             get { return Fields.ProductUnit[this]; }
             set { Fields.ProductUnit[this] = value; }
@@ -125,7 +125,7 @@ namespace Serene_Web_App.Inventory.Entities
 
             public StringField ProductName;
             public Int32Field ProductQuantity;
-            public Int32Field ProductUnit;
+            public StringField ProductUnit;
             public Int32Field ProductPrice;
             public Int32Field ProductSupplierId;
             public Int32Field ProductCategoryId;

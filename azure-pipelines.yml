@@ -33,6 +33,6 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          docker login --username=$(user) --password=$(HEROKU_API_KEY) registry.heroku.com
+          docker login --username=$(user) --password=$env:HEROKU_API_KEY registry.heroku.com
           docker push $(tag)
           heroku container:release web -a serenity-inventory

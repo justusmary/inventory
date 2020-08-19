@@ -3,36 +3,36 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-    - docker_heroku_support
-    
-    resources:
-    - repo: self
-    
-    pool:
-      vmImage: 'ubuntu-latest'
-    
-    variables:
-      docf: 'Serene Web App.Web/Dockerfile'
-      tag: 'registry.heroku.com/serenity-inventory/web'
-      user: 'valzey87@gmail.com'
-    
-    stages:
-    - stage: Release
-      displayName: Release
-      jobs:  
-      - job: Release
-        displayName: Release
-        steps:
-        - task: PowerShell@2
-          displayName: Build
-          inputs:
-            targetType: 'inline'
-            script: 'cd "Serene Web App" && docker build -f "$(docf)" -t $(tag) .'
-        - task: PowerShell@2
-          displayName: Deploy
-          inputs:
-            targetType: 'inline'
-            script: |
-              docker login --username=$(user) --password=$(HEROKU_API_KEY) registry.heroku.com
-              docker push $(tag)
-              heroku container:release web -a serenity-inventory
+- docker_heroku_support
+
+resources:
+- repo: self
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  docf: 'Serene Web App.Web/Dockerfile'
+  tag: 'registry.heroku.com/serenity-inventory/web'
+  user: 'valzey87@gmail.com'
+
+stages:
+- stage: Release
+  displayName: Release
+  jobs:  
+  - job: Release
+    displayName: Release
+    steps:
+    - task: PowerShell@2
+      displayName: Build
+      inputs:
+        targetType: 'inline'
+        script: 'cd "Serene Web App" && docker build -f "$(docf)" -t $(tag) .'
+    - task: PowerShell@2
+      displayName: Deploy
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker login --username=$(user) --password=$(HEROKU_API_KEY) registry.heroku.com
+          docker push $(tag)
+          heroku container:release web -a serenity-inventory

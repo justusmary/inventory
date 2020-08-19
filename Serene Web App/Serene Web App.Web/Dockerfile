@@ -23,4 +23,5 @@ RUN dotnet publish "Serene Web App.Web.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Serene_Web_App.Web.dll"]
+# ENTRYPOINT ["dotnet", "Serene_Web_App.Web.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Serene_Web_App.Web.dll

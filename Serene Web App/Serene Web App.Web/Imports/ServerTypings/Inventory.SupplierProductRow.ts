@@ -17,10 +17,10 @@
     export namespace SupplierProductRow {
         export const idProperty = 'SupplierProductId';
         export const localTextPrefix = 'Inventory.SupplierProduct';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const deletePermission = 'Inventory:SupplierProduct:Modify';
+        export const insertPermission = 'Inventory:SupplierProduct:Modify';
+        export const readPermission = 'Inventory:SupplierProduct:Read';
+        export const updatePermission = 'Inventory:SupplierProduct:Modify';
 
         export declare const enum Fields {
             SupplierProductId = "SupplierProductId",

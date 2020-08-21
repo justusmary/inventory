@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
+    using Serene_Web_App.Web.Modules.Inventory;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -11,8 +12,8 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Product]")]
     [DisplayName("Products"), InstanceName("Product")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Product.Read)]
+    [ModifyPermission(PermissionKeys.Product.Modify)]
     [LookupScript("Inventory.Product")]
     public sealed class ProductRow : Row, IIdRow, INameRow
     {

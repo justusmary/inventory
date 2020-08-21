@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
+    using Serene_Web_App.Web.Modules.Inventory;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -11,8 +12,8 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Category]")]
     [DisplayName("Categories"), InstanceName("Category")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Category.Read)]
+    [ModifyPermission(PermissionKeys.Category.Modify)]
     [LookupScript("Inventory.Category")]
     public sealed class CategoryRow : Row, IIdRow, INameRow
     {

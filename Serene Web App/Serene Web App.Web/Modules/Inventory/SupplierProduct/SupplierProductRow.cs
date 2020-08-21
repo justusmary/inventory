@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
+    using Serene_Web_App.Web.Modules.Inventory;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -11,8 +12,8 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[SupplierProduct]")]
     [DisplayName("Supplier Product"), InstanceName("Supplier Product")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.SupplierProduct.Read)]
+    [ModifyPermission(PermissionKeys.SupplierProduct.Modify)]
     public sealed class SupplierProductRow : Row, IIdRow
     {
         [DisplayName("Id"), Identity]

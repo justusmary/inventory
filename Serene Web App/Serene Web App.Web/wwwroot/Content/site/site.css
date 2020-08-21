@@ -8112,15 +8112,24 @@ section.content > .s-DataGrid {
   width: 150px;
 }
 .s-Inventory-SupplierProductDialog > .size {
-  width: 650px;
+  width: 500px;
+  height: 300px;
 }
 .s-Inventory-SupplierProductDialog .caption {
   width: 150px;
 }
 .s-Inventory-SupplierProdDialog > .size {
   width: 500px;
+  height: 300px;
 }
 .s-Inventory-SupplierProdDialog .caption {
+  width: 150px;
+}
+.s-Inventory-ProductSuppDialog > .size {
+  width: 500px;
+  height: 300px;
+}
+.s-Inventory-ProductSuppDialog .caption {
   width: 150px;
 }
 .main-header .logo i {

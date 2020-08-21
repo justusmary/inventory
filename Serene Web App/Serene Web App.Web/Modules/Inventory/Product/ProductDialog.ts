@@ -14,5 +14,22 @@ namespace Serene_Web_App.Inventory {
 
         protected form = new ProductForm(this.idPrefix);
 
+        private SupplierGrid: ProductSuppGrid;
+
+        constructor() {
+            super();
+
+            this.SupplierGrid = new ProductSuppGrid(this.byId("SupplierGrid"));
+            this.tabs.on('tabsactivate', (e, i) => {
+                this.arrange();
+            });
+        }
+
+        protected afterLoadEntity() {
+            super.afterLoadEntity();
+
+            this.SupplierGrid.productID = this.entityId;
+        }
+
     }
 }

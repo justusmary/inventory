@@ -21,10 +21,10 @@
         export function getLookup(): Q.Lookup<ProductRow> {
             return Q.getLookup<ProductRow>('Inventory.Product');
         }
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const deletePermission = 'Inventory:Product:Modify';
+        export const insertPermission = 'Inventory:Product:Modify';
+        export const readPermission = 'Inventory:Product:Read';
+        export const updatePermission = 'Inventory:Product:Modify';
 
         export declare const enum Fields {
             ProductId = "ProductId",

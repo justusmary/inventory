@@ -633,6 +633,8 @@ declare namespace Serene_Web_App.Inventory {
 declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Inventory {
     interface SupplierForm {
         PrimaryImage: Serenity.ImageUploadEditor;
         Name: Serenity.StringEditor;
@@ -860,6 +862,8 @@ declare namespace Serene_Web_App {
     }
 }
 declare namespace Serene_Web_App.Texts {
+}
+declare namespace Serene_Web_App.Web.Modules.Inventory {
 }
 declare namespace Serene_Web_App.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
@@ -1362,6 +1366,19 @@ declare namespace Serene_Web_App.Inventory {
     }
 }
 declare namespace Serene_Web_App.Inventory {
+    class ProductSuppGrid extends Serenity.EntityGrid<SupplierProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getGridCanLoad(): boolean;
+        private _productID;
+        get productID(): number;
+        set productID(value: number);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
     class SupplierDialog extends Serenity.EntityDialog<SupplierRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1471,21 +1488,4 @@ declare namespace Serene_Web_App.Membership {
         private form;
         constructor(container: JQuery);
     }
-}
-declare namespace Serene_Web_App.Inventory {
-    class ProductSuppGrid extends Serenity.EntityGrid<SupplierProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getGridCanLoad(): boolean;
-        private _productID;
-        get productID(): number;
-        set productID(value: number);
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-}
-declare namespace Serene_Web_App.Web.Modules.Inventory {
 }

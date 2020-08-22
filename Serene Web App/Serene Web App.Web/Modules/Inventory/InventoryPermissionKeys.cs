@@ -26,11 +26,11 @@ namespace Serene_Web_App.Web.Modules.Inventory
         [DisplayName("Suppliers")]
         public class Supplier
         {
-            [ImplicitPermission(Read), ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read)]
+            [ImplicitPermission(Read), ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read), ImplicitPermission(SupplierProduct.Modify)]
             public const string Delete = "Inventory:Supplier:Delete";
-            [ImplicitPermission(Read), ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read)]
+            [ImplicitPermission(Read), ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read), ImplicitPermission(SupplierProduct.Modify)]
             public const string Insert = "Inventory:Supplier:Create";
-            [ImplicitPermission(Read), ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read)]
+            [ImplicitPermission(Read), ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read), ImplicitPermission(SupplierProduct.Modify)]
             public const string Modify = "Inventory:Supplier:Modify";
             [ImplicitPermission(SupplierProduct.Read), ImplicitPermission(Product.Read), ImplicitPermission(Category.Read)]
             public const string Read = "Inventory:Supplier:Read";

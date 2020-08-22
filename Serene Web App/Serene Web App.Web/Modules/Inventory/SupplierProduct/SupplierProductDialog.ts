@@ -2,6 +2,7 @@
 namespace Serene_Web_App.Inventory {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
     export class SupplierProductDialog extends Serenity.EntityDialog<SupplierProductRow, any> {
         protected getFormKey() { return SupplierProductForm.formKey; }
         protected getIdProperty() { return SupplierProductRow.idProperty; }

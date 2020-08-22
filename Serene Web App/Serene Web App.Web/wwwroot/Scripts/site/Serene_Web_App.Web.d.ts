@@ -531,10 +531,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Category";
         const lookupKey = "Inventory.Category";
         function getLookup(): Q.Lookup<CategoryRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Inventory:Category:Modify";
+        const insertPermission = "Inventory:Category:Modify";
+        const readPermission = "Inventory:Category:Read";
+        const updatePermission = "Inventory:Category:Modify";
         const enum Fields {
             CategoryId = "CategoryId",
             Name = "Name"
@@ -595,10 +595,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Product";
         const lookupKey = "Inventory.Product";
         function getLookup(): Q.Lookup<ProductRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Inventory:Product:Modify";
+        const insertPermission = "Inventory:Product:Modify";
+        const readPermission = "Inventory:Product:Read";
+        const updatePermission = "Inventory:Product:Modify";
         const enum Fields {
             ProductId = "ProductId",
             Name = "Name",
@@ -678,10 +678,10 @@ declare namespace Serene_Web_App.Inventory {
     namespace SupplierProductRow {
         const idProperty = "SupplierProductId";
         const localTextPrefix = "Inventory.SupplierProduct";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Inventory:SupplierProduct:Modify";
+        const insertPermission = "Inventory:SupplierProduct:Modify";
+        const readPermission = "Inventory:SupplierProduct:Read";
+        const updatePermission = "Inventory:SupplierProduct:Modify";
         const enum Fields {
             SupplierProductId = "SupplierProductId",
             SupplierId = "SupplierId",
@@ -729,10 +729,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Supplier";
         const lookupKey = "Inventory.Supplier";
         function getLookup(): Q.Lookup<SupplierRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Inventory:Supplier:Delete";
+        const insertPermission = "Inventory:Supplier:Modify";
+        const readPermission = "Inventory:Supplier:Read";
+        const updatePermission = "Inventory:Supplier:Modify";
         const enum Fields {
             SupplierId = "SupplierId",
             Name = "Name",
@@ -1333,6 +1333,9 @@ declare namespace Serene_Web_App.Inventory {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: ProductForm;
+        private SupplierGrid;
+        constructor();
+        protected afterLoadEntity(): void;
     }
 }
 declare namespace Serene_Web_App.Inventory {
@@ -1344,6 +1347,18 @@ declare namespace Serene_Web_App.Inventory {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class ProductSuppDialog extends Serenity.EntityDialog<SupplierProductRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: SupplierProductForm;
     }
 }
 declare namespace Serene_Web_App.Inventory {
@@ -1456,4 +1471,21 @@ declare namespace Serene_Web_App.Membership {
         private form;
         constructor(container: JQuery);
     }
+}
+declare namespace Serene_Web_App.Inventory {
+    class ProductSuppGrid extends Serenity.EntityGrid<SupplierProductRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getGridCanLoad(): boolean;
+        private _productID;
+        get productID(): number;
+        set productID(value: number);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Web.Modules.Inventory {
 }

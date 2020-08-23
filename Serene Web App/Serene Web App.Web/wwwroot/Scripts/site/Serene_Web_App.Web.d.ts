@@ -633,8 +633,6 @@ declare namespace Serene_Web_App.Inventory {
 declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
-}
-declare namespace Serene_Web_App.Inventory {
     interface SupplierForm {
         PrimaryImage: Serenity.ImageUploadEditor;
         Name: Serenity.StringEditor;
@@ -648,74 +646,6 @@ declare namespace Serene_Web_App.Inventory {
     }
 }
 declare namespace Serene_Web_App.Inventory {
-}
-declare namespace Serene_Web_App.Inventory {
-}
-declare namespace Serene_Web_App.Inventory {
-    interface SupplierProductForm {
-        SupplierId: Serenity.LookupEditor;
-        ProductId: Serenity.LookupEditor;
-    }
-    class SupplierProductForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-    interface SupplierProductRow {
-        SupplierProductId?: number;
-        SupplierId?: number;
-        ProductId?: number;
-        SupplierName?: string;
-        SupplierPhone?: string;
-        SupplierAddress?: string;
-        ProductName?: string;
-        ProductQuantity?: number;
-        ProductUnit?: string;
-        ProductPrice?: number;
-        ProductSupplierId?: number;
-        ProductCategoryId?: number;
-    }
-    namespace SupplierProductRow {
-        const idProperty = "SupplierProductId";
-        const localTextPrefix = "Inventory.SupplierProduct";
-        const deletePermission = "Inventory:SupplierProduct:Modify";
-        const insertPermission = "Inventory:SupplierProduct:Modify";
-        const readPermission = "Inventory:SupplierProduct:Read";
-        const updatePermission = "Inventory:SupplierProduct:Modify";
-        const enum Fields {
-            SupplierProductId = "SupplierProductId",
-            SupplierId = "SupplierId",
-            ProductId = "ProductId",
-            SupplierName = "SupplierName",
-            SupplierPhone = "SupplierPhone",
-            SupplierAddress = "SupplierAddress",
-            ProductName = "ProductName",
-            ProductQuantity = "ProductQuantity",
-            ProductUnit = "ProductUnit",
-            ProductPrice = "ProductPrice",
-            ProductSupplierId = "ProductSupplierId",
-            ProductCategoryId = "ProductCategoryId"
-        }
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-    namespace SupplierProductService {
-        const baseUrl = "Inventory/SupplierProduct";
-        function Create(request: Serenity.SaveRequest<SupplierProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<SupplierProductRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SupplierProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SupplierProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Inventory/SupplierProduct/Create",
-            Update = "Inventory/SupplierProduct/Update",
-            Delete = "Inventory/SupplierProduct/Delete",
-            Retrieve = "Inventory/SupplierProduct/Retrieve",
-            List = "Inventory/SupplierProduct/List"
-        }
-    }
 }
 declare namespace Serene_Web_App.Inventory {
     interface SupplierRow {
@@ -1337,9 +1267,6 @@ declare namespace Serene_Web_App.Inventory {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: ProductForm;
-        private SupplierGrid;
-        constructor();
-        protected afterLoadEntity(): void;
     }
 }
 declare namespace Serene_Web_App.Inventory {
@@ -1351,31 +1278,6 @@ declare namespace Serene_Web_App.Inventory {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-    class ProductSuppDialog extends Serenity.EntityDialog<SupplierProductRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        protected form: SupplierProductForm;
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-    class ProductSuppGrid extends Serenity.EntityGrid<SupplierProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getGridCanLoad(): boolean;
-        private _productID;
-        get productID(): number;
-        set productID(value: number);
     }
 }
 declare namespace Serene_Web_App.Inventory {
@@ -1406,19 +1308,20 @@ declare namespace Serene_Web_App.Inventory {
     }
 }
 declare namespace Serene_Web_App.Inventory {
-    class SupplierProdDialog extends Serenity.EntityDialog<SupplierProductRow, any> {
+    class SupplierProdDialog extends Serenity.EntityDialog<ProductRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
         protected getService(): string;
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
-        protected form: SupplierProductForm;
+        protected form: ProductForm;
     }
 }
 declare namespace Serene_Web_App.Inventory {
-    class SupplierProdGrid extends Serenity.EntityGrid<SupplierProductRow, any> {
+    class SupplierProdGrid extends Serenity.EntityGrid<ProductRow, any> {
         protected getColumnsKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -1428,29 +1331,6 @@ declare namespace Serene_Web_App.Inventory {
         private _supplierID;
         get supplierID(): number;
         set supplierID(value: number);
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-    class SupplierProductDialog extends Serenity.EntityDialog<SupplierProductRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        protected form: SupplierProductForm;
-    }
-}
-declare namespace Serene_Web_App.Inventory {
-    class SupplierProductGrid extends Serenity.EntityGrid<SupplierProductRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof SupplierProductDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }
 declare namespace Serene_Web_App.Membership {

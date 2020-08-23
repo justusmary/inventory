@@ -21,12 +21,5 @@
             export const Modify = "Inventory:Category:Modify";
             export const Read = "Inventory:Category:Read";
         }
-
-        namespace SupplierProduct {
-            export const Delete = "Inventory:SupplierProduct:Delete";
-            export const Insert = "Inventory:SupplierProduct:Create";
-            export const Modify = "Inventory:SupplierProduct:Modify";
-            export const Read = "Inventory:SupplierProduct:Read";
-        }
     }
 }

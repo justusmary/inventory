@@ -25,8 +25,12 @@ namespace Serene_Web_App.Administration.Repositories
                 GetExisting(uow.Connection, roleID, request.Module, request.Submodule)
                 .Select(x => x.PermissionKey), StringComparer.OrdinalIgnoreCase);
 
-            var newList = new HashSet<string>(request.Permissions.ToList(),
-                StringComparer.OrdinalIgnoreCase);
+            var newList = new HashSet<string>(request.Permissions.ToList(), StringComparer.OrdinalIgnoreCase);
+
+            var allowedKeys = new UserPermissionRepository().ListPermissionKeys().Entities.ToDictionary(x => x);
+
+            if (newList.Any(x => !allowedKeys.ContainsKey(x)))
+                throw new AccessViolationException();
 
             if (oldList.SetEquals(newList))
                 return new SaveResponse();

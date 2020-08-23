@@ -10,6 +10,7 @@ namespace Serene_Web_App.Web.Modules.Inventory
     [NestedPermissionKeys]
     public class PermissionKeys
     {
+        /*
         [DisplayName("Products")]
         public class Product
         {
@@ -38,5 +39,6 @@ namespace Serene_Web_App.Web.Modules.Inventory
             public const string Modify = "Inventory:Category:Modify";
             public const string View = "Inventory:Category:View";
         }
+        */
     }
 }

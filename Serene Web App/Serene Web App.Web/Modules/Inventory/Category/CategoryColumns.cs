@@ -13,7 +13,7 @@ namespace Serene_Web_App.Inventory.Columns
     [BasedOnRow(typeof(Entities.CategoryRow), CheckNames = true)]
     public class CategoryColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId")]
+        [RowIndexFormatter, EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 CategoryId { get; set; }
         [EditLink, Width(200)]
         public String Name { get; set; }

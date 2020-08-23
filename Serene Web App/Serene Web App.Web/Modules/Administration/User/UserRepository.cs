@@ -194,6 +194,10 @@ namespace Serene_Web_App.Administration.Repositories
 
                     if (Row.DisplayName != Old.DisplayName)
                         Row.DisplayName = ValidateDisplayName(this.Connection, Row.DisplayName, Old.UserId.Value);
+
+                    var user = (UserDefinition)Authorization.UserDefinition;
+                    if (Old.SupplierId != user.SupplierId)
+                        Authorization.ValidatePermission(PermissionKeys.Suppliers);
                 }
 
                 if (IsCreate)
@@ -212,6 +216,12 @@ namespace Serene_Web_App.Administration.Repositories
                 {
                     Row.Source = "site";
                     Row.IsActive = Row.IsActive ?? 1;
+
+                    if (!Authorization.HasPermission(Administration.PermissionKeys.Suppliers) || Row.SupplierId == null)
+                    {
+                        Row.SupplierId = ((UserDefinition)Authorization.UserDefinition)
+                            .SupplierId;
+                    }
                 }
 
                 if (IsCreate || !Row.Password.IsEmptyOrNull())
@@ -247,12 +257,41 @@ namespace Serene_Web_App.Administration.Repositories
             {
                 base.ValidateRequest();
 
-                CheckPublicDemo(Row.UserId);
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (Row.SupplierId != user.SupplierId)
+                    Authorization.ValidatePermission(PermissionKeys.Suppliers);
             }
         }
 
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> {
+            protected override void ValidateRequest()
+            {
+                base.ValidateRequest();
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (Row.SupplierId != user.SupplierId)
+                    Authorization.ValidatePermission(PermissionKeys.Suppliers);
+            }
+        }
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> {
+            protected override void PrepareQuery(SqlQuery query)
+            {
+                base.PrepareQuery(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+                    query.Where(fld.SupplierId == user.SupplierId);
+            }
+        }
+        private class MyListHandler : ListRequestHandler<MyRow> {
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                base.ApplyFilters(query);
+
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+                    query.Where(fld.SupplierId == user.SupplierId);
+            }
+        }
     }
 }

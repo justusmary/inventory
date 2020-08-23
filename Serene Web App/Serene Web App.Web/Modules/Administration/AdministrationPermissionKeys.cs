@@ -13,5 +13,10 @@ namespace Serene_Web_App.Administration
 
         [Description("Languages and Translations")]
         public const string Translation = "Administration:Translation";
+
+        public const string Suppliers = "Administration:Suppliers";
+
+        [Description("Base Admin Rights")]
+        public const string General = "Administration:General";
     }
 }

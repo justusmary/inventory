@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Administration.Entities
 {
+    using Serene_Web_App.Inventory.Entities;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
@@ -99,6 +100,22 @@ namespace Serene_Web_App.Administration.Entities
             set { Fields.LastDirectoryUpdate[this] = value; }
         }
 
+        [DisplayName("Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
+        [LookupEditor(typeof(SupplierRow))]
+        [ReadPermission(PermissionKeys.Suppliers)]
+        public Int32? SupplierId
+        {
+            get { return Fields.SupplierId[this]; }
+            set { Fields.SupplierId[this] = value; }
+        }
+
+        [DisplayName("Supplier"), Expression("s.Name")]
+        public String SupplierName
+        {
+            get { return Fields.SupplierName[this]; }
+            set { Fields.SupplierName[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.UserId; }
@@ -133,6 +150,8 @@ namespace Serene_Web_App.Administration.Entities
             public StringField UserImage;
             public DateTimeField LastDirectoryUpdate;
             public Int16Field IsActive;
+            public readonly Int32Field SupplierId;
+            public readonly StringField SupplierName;
 
             public StringField Password;
             public StringField PasswordConfirm;

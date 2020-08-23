@@ -6,6 +6,7 @@ namespace Serene_Web_App.Common.Pages
     using Serenity.Web;
     using System;
     using Microsoft.AspNetCore.Mvc;
+    using Serene_Web_App.Administration;
 
     [Route("Dashboard/[action]")]
     public class DashboardController : Controller

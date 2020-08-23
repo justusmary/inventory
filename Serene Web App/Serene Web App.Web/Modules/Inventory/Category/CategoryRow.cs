@@ -12,7 +12,7 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Category]")]
     [DisplayName("Categories"), InstanceName("Category")]
-    [ReadPermission(PermissionKeys.Category.Read)]
+    [ReadPermission(PermissionKeys.Category.View)]
     [ModifyPermission(PermissionKeys.Category.Modify)]
     [LookupScript("Inventory.Category")]
     public sealed class CategoryRow : Row, IIdRow, INameRow

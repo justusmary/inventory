@@ -12,9 +12,8 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Supplier]")]
     [DisplayName("Suppliers"), InstanceName("Supplier")]
-    [ReadPermission(PermissionKeys.Supplier.Read)]
+    [ReadPermission(PermissionKeys.Supplier.View)]
     [ModifyPermission(PermissionKeys.Supplier.Modify)]
-    [DeletePermission(PermissionKeys.Supplier.Delete)]
     [LookupScript("Inventory.Supplier")]
     public sealed class SupplierRow : Row, IIdRow, INameRow
     {

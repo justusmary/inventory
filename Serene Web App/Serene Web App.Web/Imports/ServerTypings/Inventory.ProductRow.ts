@@ -23,7 +23,7 @@
         }
         export const deletePermission = 'Inventory:Product:Modify';
         export const insertPermission = 'Inventory:Product:Modify';
-        export const readPermission = 'Inventory:Product:Read';
+        export const readPermission = 'Inventory:Product:View';
         export const updatePermission = 'Inventory:Product:Modify';
 
         export declare const enum Fields {

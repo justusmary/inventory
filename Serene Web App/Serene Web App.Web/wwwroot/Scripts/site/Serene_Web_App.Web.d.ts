@@ -533,7 +533,7 @@ declare namespace Serene_Web_App.Inventory {
         function getLookup(): Q.Lookup<CategoryRow>;
         const deletePermission = "Inventory:Category:Modify";
         const insertPermission = "Inventory:Category:Modify";
-        const readPermission = "Inventory:Category:Read";
+        const readPermission = "Inventory:Category:View";
         const updatePermission = "Inventory:Category:Modify";
         const enum Fields {
             CategoryId = "CategoryId",
@@ -597,7 +597,7 @@ declare namespace Serene_Web_App.Inventory {
         function getLookup(): Q.Lookup<ProductRow>;
         const deletePermission = "Inventory:Product:Modify";
         const insertPermission = "Inventory:Product:Modify";
-        const readPermission = "Inventory:Product:Read";
+        const readPermission = "Inventory:Product:View";
         const updatePermission = "Inventory:Product:Modify";
         const enum Fields {
             ProductId = "ProductId",
@@ -661,9 +661,9 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Supplier";
         const lookupKey = "Inventory.Supplier";
         function getLookup(): Q.Lookup<SupplierRow>;
-        const deletePermission = "Inventory:Supplier:Delete";
+        const deletePermission = "Inventory:Supplier:Modify";
         const insertPermission = "Inventory:Supplier:Modify";
-        const readPermission = "Inventory:Supplier:Read";
+        const readPermission = "Inventory:Supplier:View";
         const updatePermission = "Inventory:Supplier:Modify";
         const enum Fields {
             SupplierId = "SupplierId",

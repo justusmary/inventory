@@ -75,7 +75,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Price[this] = value; }
         }
 
-        [DisplayName("Current Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
+        [DisplayName("Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
         [LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
         public Int32? SupplierId
         {

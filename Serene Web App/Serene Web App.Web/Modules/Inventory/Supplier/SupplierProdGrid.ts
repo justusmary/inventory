@@ -2,12 +2,12 @@
 namespace Serene_Web_App.Inventory {
 
     @Serenity.Decorators.registerClass()
-    export class SupplierProdGrid extends Serenity.EntityGrid<SupplierProductRow, any>
+    export class SupplierProdGrid extends Serenity.EntityGrid<ProductRow, any>
     {
         protected getColumnsKey() { return "Inventory.SupplierProd"; }
-        protected getIdProperty() { return SupplierProductRow.idProperty; }
-        protected getLocalTextPrefix() { return SupplierProductRow.localTextPrefix; }
-        protected getService() { return SupplierProductService.baseUrl; }
+        protected getIdProperty() { return ProductRow.idProperty; }
+        protected getLocalTextPrefix() { return ProductRow.localTextPrefix; }
+        protected getService() { return ProductService.baseUrl; }
 
         constructor(container: JQuery) {
             super(container);
@@ -26,7 +26,7 @@ namespace Serene_Web_App.Inventory {
         set supplierID(value: number) {
             if (this._supplierID != value) {
                 this._supplierID = value;
-                this.setEquality(SupplierProductRow.Fields.SupplierId, value);
+                this.setEquality(ProductRow.Fields.SupplierId, value);
                 this.refresh();
             }
         }

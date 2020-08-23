@@ -6,4 +6,3 @@ using MyPages = Serene_Web_App.Inventory.Pages;
 [assembly: NavigationLink(int.MaxValue, "Inventory/Category", typeof(MyPages.CategoryController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Inventory/Supplier", typeof(MyPages.SupplierController), icon: null)]
 */
-[assembly: NavigationLink(int.MaxValue, "Inventory/Supplier Product", typeof(MyPages.SupplierProductController), icon: null)]

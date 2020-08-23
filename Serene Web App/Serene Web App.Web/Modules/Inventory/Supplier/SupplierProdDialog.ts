@@ -3,16 +3,18 @@ namespace Serene_Web_App.Inventory {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.panel()
-    export class SupplierProdDialog extends Serenity.EntityDialog<SupplierProductRow, any> {
-        protected getFormKey() { return SupplierProductForm.formKey; }
-        protected getIdProperty() { return SupplierProductRow.idProperty; }
-        protected getLocalTextPrefix() { return SupplierProductRow.localTextPrefix; }
-        protected getService() { return SupplierProductService.baseUrl; }
-        protected getDeletePermission() { return SupplierProductRow.deletePermission; }
-        protected getInsertPermission() { return SupplierProductRow.insertPermission; }
-        protected getUpdatePermission() { return SupplierProductRow.updatePermission; }
+    export class SupplierProdDialog extends Serenity.EntityDialog<ProductRow, any> {
+        protected getFormKey() { return ProductForm.formKey; }
+        protected getIdProperty() { return ProductRow.idProperty; }
+        protected getLocalTextPrefix() { return ProductRow.localTextPrefix; }
+        protected getNameProperty() { return ProductRow.nameProperty; }
+        protected getService() { return ProductService.baseUrl; }
+        protected getDeletePermission() { return ProductRow.deletePermission; }
+        protected getInsertPermission() { return ProductRow.insertPermission; }
+        protected getUpdatePermission() { return ProductRow.updatePermission; }
 
-        protected form = new SupplierProductForm(this.idPrefix);
+        protected form = new ProductForm(this.idPrefix);
+
 
     }
 }

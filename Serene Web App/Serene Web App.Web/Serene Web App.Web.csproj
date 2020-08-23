@@ -10,8 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\**\*.sql" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
-    <None Remove="Modules\Inventory\Product\ProductSuppDialog.ts" />
-    <None Remove="Modules\Inventory\Product\ProductSuppGrid.ts" />
     <None Remove="Modules\Inventory\Supplier\SupplierProdDialog.ts" />
     <None Remove="Modules\Inventory\Supplier\SupplierProdGrid.ts" />
     <None Update="wwwroot\**\*">

@@ -15,7 +15,7 @@ namespace Serene_Web_App.Inventory.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 CategoryId { get; set; }
-        [EditLink, Width(150)]
+        [EditLink, Width(200)]
         public String Name { get; set; }
     }
 }

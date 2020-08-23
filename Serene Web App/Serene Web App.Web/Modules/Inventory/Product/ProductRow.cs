@@ -12,7 +12,7 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Product]")]
     [DisplayName("Products"), InstanceName("Product")]
-    [ReadPermission(PermissionKeys.Product.Read)]
+    [ReadPermission(PermissionKeys.Product.View)]
     [ModifyPermission(PermissionKeys.Product.Modify)]
     [LookupScript("Inventory.Product")]
     public sealed class ProductRow : Row, IIdRow, INameRow

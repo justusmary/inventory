@@ -13,10 +13,10 @@
         export function getLookup(): Q.Lookup<CategoryRow> {
             return Q.getLookup<CategoryRow>('Inventory.Category');
         }
-        export const deletePermission = 'Inventory:Category:Modify';
-        export const insertPermission = 'Inventory:Category:Modify';
-        export const readPermission = 'Inventory:Category:View';
-        export const updatePermission = 'Inventory:Category:Modify';
+        export const deletePermission = 'Administration:Suppliers';
+        export const insertPermission = 'Administration:Suppliers';
+        export const readPermission = 'Administration:General';
+        export const updatePermission = 'Administration:Suppliers';
 
         export declare const enum Fields {
             CategoryId = "CategoryId",

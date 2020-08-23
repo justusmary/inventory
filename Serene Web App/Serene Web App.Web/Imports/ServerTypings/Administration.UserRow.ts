@@ -10,6 +10,8 @@
         UserImage?: string;
         LastDirectoryUpdate?: string;
         IsActive?: number;
+        SupplierId?: number;
+        SupplierName?: string;
         Password?: string;
         PasswordConfirm?: string;
         InsertUserId?: number;
@@ -44,6 +46,8 @@
             UserImage = "UserImage",
             LastDirectoryUpdate = "LastDirectoryUpdate",
             IsActive = "IsActive",
+            SupplierId = "SupplierId",
+            SupplierName = "SupplierName",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
             InsertUserId = "InsertUserId",

@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Administration.Columns
 {
+    using Serene_Web_App.Inventory;
     using Serenity.ComponentModel;
     using System;
 
@@ -8,7 +9,7 @@ namespace Serene_Web_App.Administration.Columns
     [BasedOnRow(typeof(Entities.UserRow), CheckNames = true)]
     public class UserColumns
     {
-        [EditLink, AlignRight, Width(55)]
+        [RowIndexFormatter, EditLink, AlignRight, Width(55)]
         public String UserId { get; set; }
         [EditLink, Width(150)]
         public String Username { get; set; }

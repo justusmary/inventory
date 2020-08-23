@@ -1,7 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
-    using Serene_Web_App.Web.Modules.Inventory;
+    using Serene_Web_App.Administration;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -12,10 +12,11 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Supplier]")]
     [DisplayName("Suppliers"), InstanceName("Supplier")]
-    [ReadPermission(PermissionKeys.Supplier.View)]
-    [ModifyPermission(PermissionKeys.Supplier.Modify)]
+    [ReadPermission(PermissionKeys.General)]
+    [InsertPermission(PermissionKeys.Suppliers)]
+    [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Inventory.Supplier")]
-    public sealed class SupplierRow : Row, IIdRow, INameRow
+    public sealed class SupplierRow : Row, IIdRow, INameRow, IMultiSupplierRow
     {
         [DisplayName("Primary Image"), Size(100),
          ImageUploadEditor(FilenameFormat = "Supplier/PrimaryImage/~")]
@@ -61,6 +62,11 @@ namespace Serene_Web_App.Inventory.Entities
         StringField INameRow.NameField
         {
             get { return Fields.Name; }
+        }
+
+        public Int32Field SupplierIdField
+        {
+            get { return Fields.SupplierId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

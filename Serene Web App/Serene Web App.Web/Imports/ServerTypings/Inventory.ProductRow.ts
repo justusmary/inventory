@@ -16,15 +16,15 @@
         export const idProperty = 'ProductId';
         export const nameProperty = 'Name';
         export const localTextPrefix = 'Inventory.Product';
-        export const lookupKey = 'Inventory.Product';
+        export const lookupKey = 'Inventory.ProductSuplier';
 
         export function getLookup(): Q.Lookup<ProductRow> {
-            return Q.getLookup<ProductRow>('Inventory.Product');
+            return Q.getLookup<ProductRow>('Inventory.ProductSuplier');
         }
-        export const deletePermission = 'Inventory:Product:Modify';
-        export const insertPermission = 'Inventory:Product:Modify';
-        export const readPermission = 'Inventory:Product:View';
-        export const updatePermission = 'Inventory:Product:Modify';
+        export const deletePermission = 'Administration:General';
+        export const insertPermission = 'Administration:General';
+        export const readPermission = 'Administration:General';
+        export const updatePermission = 'Administration:General';
 
         export declare const enum Fields {
             ProductId = "ProductId",

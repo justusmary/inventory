@@ -1,7 +1,8 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
-    using Serene_Web_App.Web.Modules.Inventory;
+    using Serene_Web_App.Administration;
+    using Serene_Web_App.Inventory.Scripts;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -12,10 +13,10 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Product]")]
     [DisplayName("Products"), InstanceName("Product")]
-    [ReadPermission(PermissionKeys.Product.View)]
-    [ModifyPermission(PermissionKeys.Product.Modify)]
-    [LookupScript("Inventory.Product")]
-    public sealed class ProductRow : Row, IIdRow, INameRow
+    [ReadPermission(PermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.General)]
+    [LookupScript("Inventory.Product", LookupType = typeof(MultiSupplierRowLookupScript<>))]
+    public sealed class ProductRow : Row, IIdRow, INameRow, IMultiSupplierRow
     {
         [DisplayName("Primary Image"), Size(100),
          ImageUploadEditor(FilenameFormat = "Product/PrimaryImage/~")]
@@ -62,7 +63,7 @@ namespace Serene_Web_App.Inventory.Entities
         }
 
         [DisplayName("Unit")]
-        public String? Unit
+        public String Unit
         {
             get { return Fields.Unit[this]; }
             set { Fields.Unit[this] = value; }
@@ -77,13 +78,14 @@ namespace Serene_Web_App.Inventory.Entities
 
         [DisplayName("Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
         [LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
+        [Insertable(false), Updatable(false)]
         public Int32? SupplierId
         {
             get { return Fields.SupplierId[this]; }
             set { Fields.SupplierId[this] = value; }
         }
 
-        [DisplayName("Current Supplier"), Expression("s.Name")]
+        [DisplayName("Supplier"), Expression("s.Name")]
         public String SupplierName
         {
             get { return Fields.SupplierName[this]; }
@@ -98,6 +100,11 @@ namespace Serene_Web_App.Inventory.Entities
         StringField INameRow.NameField
         {
             get { return Fields.Name; }
+        }
+
+        public Int32Field SupplierIdField
+        {
+            get { return Fields.SupplierId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

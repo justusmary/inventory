@@ -568,6 +568,139 @@ declare namespace Serene_Web_App.Inventory {
 declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
+    interface CustomerForm {
+        Name: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+    }
+    class CustomerForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface CustomerRow {
+        CustomerId?: number;
+        Name?: string;
+        Phone?: string;
+        Address?: string;
+    }
+    namespace CustomerRow {
+        const idProperty = "CustomerId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Inventory.Customer";
+        const lookupKey = "Inventory.Customer";
+        function getLookup(): Q.Lookup<CustomerRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CustomerId = "CustomerId",
+            Name = "Name",
+            Phone = "Phone",
+            Address = "Address"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    namespace CustomerService {
+        const baseUrl = "Inventory/Customer";
+        function Create(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Inventory/Customer/Create",
+            Update = "Inventory/Customer/Update",
+            Delete = "Inventory/Customer/Delete",
+            Retrieve = "Inventory/Customer/Retrieve",
+            List = "Inventory/Customer/List"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Inventory {
+    interface OrderItemForm {
+        ProductId: Serenity.LookupEditor;
+        Quantity: Serenity.IntegerEditor;
+        UnitPrice: Serenity.DecimalEditor;
+    }
+    class OrderItemForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface OrderItemRow {
+        OrderItemId?: number;
+        PurchaseOrderId?: number;
+        ProductId?: number;
+        Quantity?: number;
+        UnitPrice?: number;
+        Date?: string;
+        PurchaseOrderAmount?: number;
+        PurchaseOrderDate?: string;
+        ProductName?: string;
+        ProductQuantity?: number;
+        ProductUnit?: string;
+        ProductPrice?: number;
+        ProductSupplierId?: number;
+        ProductCategoryId?: number;
+        ProductPrimaryImage?: string;
+        LineTotal?: number;
+    }
+    namespace OrderItemRow {
+        const idProperty = "OrderItemId";
+        const localTextPrefix = "Inventory.OrderItem";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OrderItemId = "OrderItemId",
+            PurchaseOrderId = "PurchaseOrderId",
+            ProductId = "ProductId",
+            Quantity = "Quantity",
+            UnitPrice = "UnitPrice",
+            Date = "Date",
+            PurchaseOrderAmount = "PurchaseOrderAmount",
+            PurchaseOrderDate = "PurchaseOrderDate",
+            ProductName = "ProductName",
+            ProductQuantity = "ProductQuantity",
+            ProductUnit = "ProductUnit",
+            ProductPrice = "ProductPrice",
+            ProductSupplierId = "ProductSupplierId",
+            ProductCategoryId = "ProductCategoryId",
+            ProductPrimaryImage = "ProductPrimaryImage",
+            LineTotal = "LineTotal"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    namespace OrderItemService {
+        const baseUrl = "Inventory/OrderItem";
+        function Create(request: Serenity.SaveRequest<OrderItemRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrderItemRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderItemRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderItemRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Inventory/OrderItem/Create",
+            Update = "Inventory/OrderItem/Update",
+            Delete = "Inventory/OrderItem/Delete",
+            Retrieve = "Inventory/OrderItem/Retrieve",
+            List = "Inventory/OrderItem/List"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Inventory {
     interface ProductForm {
         PrimaryImage: Serenity.ImageUploadEditor;
         Name: Serenity.StringEditor;
@@ -581,6 +714,83 @@ declare namespace Serene_Web_App.Inventory {
         static formKey: string;
         private static init;
         constructor(prefix: string);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Inventory {
+    interface ProductOrderForm {
+        ProductId: Serenity.LookupEditor;
+        SupplierId: Serenity.LookupEditor;
+        Quantity: Serenity.IntegerEditor;
+        TotalAmount: Serenity.DecimalEditor;
+        Fulfilled: Serenity.BooleanEditor;
+    }
+    class ProductOrderForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface ProductOrderRow {
+        ProductOrderId?: number;
+        ProductId?: number;
+        Quantity?: number;
+        TotalAmount?: number;
+        Date?: string;
+        Fulfilled?: boolean;
+        ProductName?: string;
+        ProductQuantity?: number;
+        ProductUnit?: string;
+        ProductPrice?: number;
+        ProductSupplierId?: number;
+        ProductCategoryId?: number;
+        ProductPrimaryImage?: string;
+        SupplierId?: number;
+        SupplierName?: string;
+    }
+    namespace ProductOrderRow {
+        const idProperty = "ProductOrderId";
+        const localTextPrefix = "Inventory.ProductOrder";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            ProductOrderId = "ProductOrderId",
+            ProductId = "ProductId",
+            Quantity = "Quantity",
+            TotalAmount = "TotalAmount",
+            Date = "Date",
+            Fulfilled = "Fulfilled",
+            ProductName = "ProductName",
+            ProductQuantity = "ProductQuantity",
+            ProductUnit = "ProductUnit",
+            ProductPrice = "ProductPrice",
+            ProductSupplierId = "ProductSupplierId",
+            ProductCategoryId = "ProductCategoryId",
+            ProductPrimaryImage = "ProductPrimaryImage",
+            SupplierId = "SupplierId",
+            SupplierName = "SupplierName"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    namespace ProductOrderService {
+        const baseUrl = "Inventory/ProductOrder";
+        function Create(request: Serenity.SaveRequest<ProductOrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductOrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductOrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductOrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Inventory/ProductOrder/Create",
+            Update = "Inventory/ProductOrder/Update",
+            Delete = "Inventory/ProductOrder/Delete",
+            Retrieve = "Inventory/ProductOrder/Retrieve",
+            List = "Inventory/ProductOrder/List"
+        }
     }
 }
 declare namespace Serene_Web_App.Inventory {
@@ -600,7 +810,7 @@ declare namespace Serene_Web_App.Inventory {
         const idProperty = "ProductId";
         const nameProperty = "Name";
         const localTextPrefix = "Inventory.Product";
-        const lookupKey = "Inventory.ProductSuplier";
+        const lookupKey = "Inventory.Product";
         function getLookup(): Q.Lookup<ProductRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
@@ -634,6 +844,132 @@ declare namespace Serene_Web_App.Inventory {
             Delete = "Inventory/Product/Delete",
             Retrieve = "Inventory/Product/Retrieve",
             List = "Inventory/Product/List"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Inventory {
+    interface PurchaseOrderForm {
+        CustomerId: Serenity.LookupEditor;
+        Amount: Serenity.DecimalEditor;
+        ItemList: OrderItemsEditor;
+    }
+    class PurchaseOrderForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface PurchaseOrderListRequest extends Serenity.ListRequest {
+        ProductId?: number;
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface PurchaseOrderRow {
+        PurchaseOrderId?: number;
+        CustomerId?: number;
+        Amount?: number;
+        Date?: string;
+        CustomerName?: string;
+        ItemList?: OrderItemRow[];
+    }
+    namespace PurchaseOrderRow {
+        const idProperty = "PurchaseOrderId";
+        const localTextPrefix = "Inventory.PurchaseOrder";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            PurchaseOrderId = "PurchaseOrderId",
+            CustomerId = "CustomerId",
+            Amount = "Amount",
+            Date = "Date",
+            CustomerName = "CustomerName",
+            ItemList = "ItemList"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    namespace PurchaseOrderService {
+        const baseUrl = "Inventory/PurchaseOrder";
+        function Create(request: Serenity.SaveRequest<PurchaseOrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<PurchaseOrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PurchaseOrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: PurchaseOrderListRequest, onSuccess?: (response: Serenity.ListResponse<PurchaseOrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Inventory/PurchaseOrder/Create",
+            Update = "Inventory/PurchaseOrder/Update",
+            Delete = "Inventory/PurchaseOrder/Delete",
+            Retrieve = "Inventory/PurchaseOrder/Retrieve",
+            List = "Inventory/PurchaseOrder/List"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+}
+declare namespace Serene_Web_App.Inventory {
+    interface ShipmentForm {
+        PurchaseOrderId: Serenity.IntegerEditor;
+        TotalAmount: Serenity.DecimalEditor;
+        DestinationAddress: Serenity.StringEditor;
+        Date: Serenity.DateEditor;
+        Shipped: Serenity.BooleanEditor;
+    }
+    class ShipmentForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface ShipmentRow {
+        ShipmentId?: number;
+        PurchaseOrderId?: number;
+        TotalAmount?: number;
+        DestinationAddress?: string;
+        Date?: string;
+        Shipped?: boolean;
+        PurchaseOrderAmount?: number;
+        PurchaseOrderDate?: string;
+    }
+    namespace ShipmentRow {
+        const idProperty = "ShipmentId";
+        const nameProperty = "DestinationAddress";
+        const localTextPrefix = "Inventory.Shipment";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            ShipmentId = "ShipmentId",
+            PurchaseOrderId = "PurchaseOrderId",
+            TotalAmount = "TotalAmount",
+            DestinationAddress = "DestinationAddress",
+            Date = "Date",
+            Shipped = "Shipped",
+            PurchaseOrderAmount = "PurchaseOrderAmount",
+            PurchaseOrderDate = "PurchaseOrderDate"
+        }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    namespace ShipmentService {
+        const baseUrl = "Inventory/Shipment";
+        function Create(request: Serenity.SaveRequest<ShipmentRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ShipmentRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ShipmentRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ShipmentRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Inventory/Shipment/Create",
+            Update = "Inventory/Shipment/Update",
+            Delete = "Inventory/Shipment/Delete",
+            Retrieve = "Inventory/Shipment/Retrieve",
+            List = "Inventory/Shipment/List"
         }
     }
 }
@@ -1270,6 +1606,63 @@ declare namespace Serene_Web_App.Inventory {
     }
 }
 declare namespace Serene_Web_App.Inventory {
+    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: CustomerForm;
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CustomerDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class OrderItemDialog extends Common.GridEditorDialog<OrderItemRow> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: OrderItemForm;
+        constructor();
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class OrderItemGrid extends Serenity.EntityGrid<OrderItemRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderItemDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class OrderItemsEditor extends Common.GridEditorBase<OrderItemRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderItemDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
+    }
+}
+declare namespace Serene_Web_App.Inventory {
     class ProductDialog extends Serenity.EntityDialog<ProductRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -1286,6 +1679,77 @@ declare namespace Serene_Web_App.Inventory {
     class ProductGrid extends Serenity.EntityGrid<ProductRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ProductDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class ProductOrderDialog extends Serenity.EntityDialog<ProductOrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: ProductOrderForm;
+        constructor();
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class ProductOrderGrid extends Serenity.EntityGrid<ProductOrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductOrderDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class PurchaseOrderDialog extends Serenity.EntityDialog<PurchaseOrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: PurchaseOrderForm;
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class PurchaseOrderGrid extends Serenity.EntityGrid<PurchaseOrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PurchaseOrderDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class ShipmentDialog extends Serenity.EntityDialog<ShipmentRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: ShipmentForm;
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    class ShipmentGrid extends Serenity.EntityGrid<ShipmentRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ShipmentDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;

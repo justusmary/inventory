@@ -16,10 +16,10 @@
         export const idProperty = 'ProductId';
         export const nameProperty = 'Name';
         export const localTextPrefix = 'Inventory.Product';
-        export const lookupKey = 'Inventory.ProductSuplier';
+        export const lookupKey = 'Inventory.Product';
 
         export function getLookup(): Q.Lookup<ProductRow> {
-            return Q.getLookup<ProductRow>('Inventory.ProductSuplier');
+            return Q.getLookup<ProductRow>('Inventory.Product');
         }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';

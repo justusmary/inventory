@@ -92,6 +92,32 @@
                 export const Name: string;
             }
 
+            namespace Customer {
+                export const Address: string;
+                export const CustomerId: string;
+                export const Name: string;
+                export const Phone: string;
+            }
+
+            namespace OrderItem {
+                export const Date: string;
+                export const LineTotal: string;
+                export const OrderItemId: string;
+                export const ProductCategoryId: string;
+                export const ProductId: string;
+                export const ProductName: string;
+                export const ProductPrice: string;
+                export const ProductPrimaryImage: string;
+                export const ProductQuantity: string;
+                export const ProductSupplierId: string;
+                export const ProductUnit: string;
+                export const PurchaseOrderAmount: string;
+                export const PurchaseOrderDate: string;
+                export const PurchaseOrderId: string;
+                export const Quantity: string;
+                export const UnitPrice: string;
+            }
+
             namespace Product {
                 export const CategoryId: string;
                 export const CategoryName: string;
@@ -103,6 +129,44 @@
                 export const SupplierId: string;
                 export const SupplierName: string;
                 export const Unit: string;
+            }
+
+            namespace ProductOrder {
+                export const Date: string;
+                export const Fulfilled: string;
+                export const ProductCategoryId: string;
+                export const ProductId: string;
+                export const ProductName: string;
+                export const ProductOrderId: string;
+                export const ProductPrice: string;
+                export const ProductPrimaryImage: string;
+                export const ProductQuantity: string;
+                export const ProductSupplierId: string;
+                export const ProductUnit: string;
+                export const Quantity: string;
+                export const SupplierId: string;
+                export const SupplierName: string;
+                export const TotalAmount: string;
+            }
+
+            namespace PurchaseOrder {
+                export const Amount: string;
+                export const CustomerId: string;
+                export const CustomerName: string;
+                export const Date: string;
+                export const ItemList: string;
+                export const PurchaseOrderId: string;
+            }
+
+            namespace Shipment {
+                export const Date: string;
+                export const DestinationAddress: string;
+                export const PurchaseOrderAmount: string;
+                export const PurchaseOrderDate: string;
+                export const PurchaseOrderId: string;
+                export const ShipmentId: string;
+                export const Shipped: string;
+                export const TotalAmount: string;
             }
 
             namespace Supplier {
@@ -262,5 +326,5 @@
         export const SavePrimaryKeyError: string;
     }
 
-    Serene_Web_App['Texts'] = Q.proxyTexts(Texts, '', {Db:{Administration:{Language:{Id:1,LanguageId:1,LanguageName:1},Role:{RoleId:1,RoleName:1,SupplierId:1},RolePermission:{PermissionKey:1,RoleId:1,RolePermissionId:1,RoleRoleName:1},Translation:{CustomText:1,EntityPlural:1,Key:1,OverrideConfirmation:1,SaveChangesButton:1,SourceLanguage:1,SourceText:1,TargetLanguage:1,TargetText:1},User:{DisplayName:1,Email:1,InsertDate:1,InsertUserId:1,IsActive:1,LastDirectoryUpdate:1,Password:1,PasswordConfirm:1,PasswordHash:1,PasswordSalt:1,Source:1,SupplierId:1,SupplierName:1,UpdateDate:1,UpdateUserId:1,UserId:1,UserImage:1,Username:1},UserPermission:{Granted:1,PermissionKey:1,User:1,UserId:1,UserPermissionId:1,Username:1},UserRole:{RoleId:1,User:1,UserId:1,UserRoleId:1,Username:1}},Common:{UserPreference:{Name:1,PreferenceType:1,UserId:1,UserPreferenceId:1,Value:1}},Inventory:{Category:{CategoryId:1,Name:1},Product:{CategoryId:1,CategoryName:1,Name:1,Price:1,PrimaryImage:1,ProductId:1,Quantity:1,SupplierId:1,SupplierName:1,Unit:1},Supplier:{Address:1,Name:1,Phone:1,PrimaryImage:1,SupplierId:1}}},Forms:{Membership:{ChangePassword:{FormTitle:1,SubmitButton:1,Success:1},ForgotPassword:{BackToLogin:1,FormInfo:1,FormTitle:1,SubmitButton:1,Success:1},Login:{FacebookButton:1,ForgotPassword:1,FormTitle:1,GoogleButton:1,OR:1,RememberMe:1,SignInButton:1,SignUpButton:1},ResetPassword:{BackToLogin:1,EmailSubject:1,FormTitle:1,SubmitButton:1,Success:1},SignUp:{AcceptTerms:1,ActivateEmailSubject:1,ActivationCompleteMessage:1,BackToLogin:1,ConfirmEmail:1,ConfirmPassword:1,DisplayName:1,Email:1,FormInfo:1,FormTitle:1,Password:1,SubmitButton:1,Success:1}}},Site:{AccessDenied:{ClickToChangeUser:1,ClickToLogin:1,LackPermissions:1,NotLoggedIn:1,PageTitle:1},BasicProgressDialog:{CancelTitle:1,PleaseWait:1},BulkServiceAction:{AllHadErrorsFormat:1,AllSuccessFormat:1,ConfirmationFormat:1,ErrorCount:1,NothingToProcess:1,SomeHadErrorsFormat:1,SuccessCount:1},Dashboard:{ContentDescription:1},Layout:{FooterCopyright:1,FooterInfo:1,FooterRights:1,GeneralSettings:1,Language:1,Theme:1,ThemeBlack:1,ThemeBlackLight:1,ThemeBlue:1,ThemeBlueLight:1,ThemeGreen:1,ThemeGreenLight:1,ThemePurple:1,ThemePurpleLight:1,ThemeRed:1,ThemeRedLight:1,ThemeYellow:1,ThemeYellowLight:1},RolePermissionDialog:{DialogTitle:1,EditButton:1,SaveSuccess:1},UserDialog:{EditPermissionsButton:1,EditRolesButton:1},UserPermissionDialog:{DialogTitle:1,Grant:1,Permission:1,Revoke:1,SaveSuccess:1},UserRoleDialog:{DialogTitle:1,SaveSuccess:1},ValidationError:{Title:1}},Validation:{AuthenticationError:1,CantFindUserWithEmail:1,CurrentPasswordMismatch:1,DeleteForeignKeyError:1,EmailConfirm:1,EmailInUse:1,InvalidActivateToken:1,InvalidResetToken:1,MinRequiredPasswordLength:1,SavePrimaryKeyError:1}});
+    Serene_Web_App['Texts'] = Q.proxyTexts(Texts, '', {Db:{Administration:{Language:{Id:1,LanguageId:1,LanguageName:1},Role:{RoleId:1,RoleName:1,SupplierId:1},RolePermission:{PermissionKey:1,RoleId:1,RolePermissionId:1,RoleRoleName:1},Translation:{CustomText:1,EntityPlural:1,Key:1,OverrideConfirmation:1,SaveChangesButton:1,SourceLanguage:1,SourceText:1,TargetLanguage:1,TargetText:1},User:{DisplayName:1,Email:1,InsertDate:1,InsertUserId:1,IsActive:1,LastDirectoryUpdate:1,Password:1,PasswordConfirm:1,PasswordHash:1,PasswordSalt:1,Source:1,SupplierId:1,SupplierName:1,UpdateDate:1,UpdateUserId:1,UserId:1,UserImage:1,Username:1},UserPermission:{Granted:1,PermissionKey:1,User:1,UserId:1,UserPermissionId:1,Username:1},UserRole:{RoleId:1,User:1,UserId:1,UserRoleId:1,Username:1}},Common:{UserPreference:{Name:1,PreferenceType:1,UserId:1,UserPreferenceId:1,Value:1}},Inventory:{Category:{CategoryId:1,Name:1},Customer:{Address:1,CustomerId:1,Name:1,Phone:1},OrderItem:{Date:1,LineTotal:1,OrderItemId:1,ProductCategoryId:1,ProductId:1,ProductName:1,ProductPrice:1,ProductPrimaryImage:1,ProductQuantity:1,ProductSupplierId:1,ProductUnit:1,PurchaseOrderAmount:1,PurchaseOrderDate:1,PurchaseOrderId:1,Quantity:1,UnitPrice:1},Product:{CategoryId:1,CategoryName:1,Name:1,Price:1,PrimaryImage:1,ProductId:1,Quantity:1,SupplierId:1,SupplierName:1,Unit:1},ProductOrder:{Date:1,Fulfilled:1,ProductCategoryId:1,ProductId:1,ProductName:1,ProductOrderId:1,ProductPrice:1,ProductPrimaryImage:1,ProductQuantity:1,ProductSupplierId:1,ProductUnit:1,Quantity:1,SupplierId:1,SupplierName:1,TotalAmount:1},PurchaseOrder:{Amount:1,CustomerId:1,CustomerName:1,Date:1,ItemList:1,PurchaseOrderId:1},Shipment:{Date:1,DestinationAddress:1,PurchaseOrderAmount:1,PurchaseOrderDate:1,PurchaseOrderId:1,ShipmentId:1,Shipped:1,TotalAmount:1},Supplier:{Address:1,Name:1,Phone:1,PrimaryImage:1,SupplierId:1}}},Forms:{Membership:{ChangePassword:{FormTitle:1,SubmitButton:1,Success:1},ForgotPassword:{BackToLogin:1,FormInfo:1,FormTitle:1,SubmitButton:1,Success:1},Login:{FacebookButton:1,ForgotPassword:1,FormTitle:1,GoogleButton:1,OR:1,RememberMe:1,SignInButton:1,SignUpButton:1},ResetPassword:{BackToLogin:1,EmailSubject:1,FormTitle:1,SubmitButton:1,Success:1},SignUp:{AcceptTerms:1,ActivateEmailSubject:1,ActivationCompleteMessage:1,BackToLogin:1,ConfirmEmail:1,ConfirmPassword:1,DisplayName:1,Email:1,FormInfo:1,FormTitle:1,Password:1,SubmitButton:1,Success:1}}},Site:{AccessDenied:{ClickToChangeUser:1,ClickToLogin:1,LackPermissions:1,NotLoggedIn:1,PageTitle:1},BasicProgressDialog:{CancelTitle:1,PleaseWait:1},BulkServiceAction:{AllHadErrorsFormat:1,AllSuccessFormat:1,ConfirmationFormat:1,ErrorCount:1,NothingToProcess:1,SomeHadErrorsFormat:1,SuccessCount:1},Dashboard:{ContentDescription:1},Layout:{FooterCopyright:1,FooterInfo:1,FooterRights:1,GeneralSettings:1,Language:1,Theme:1,ThemeBlack:1,ThemeBlackLight:1,ThemeBlue:1,ThemeBlueLight:1,ThemeGreen:1,ThemeGreenLight:1,ThemePurple:1,ThemePurpleLight:1,ThemeRed:1,ThemeRedLight:1,ThemeYellow:1,ThemeYellowLight:1},RolePermissionDialog:{DialogTitle:1,EditButton:1,SaveSuccess:1},UserDialog:{EditPermissionsButton:1,EditRolesButton:1},UserPermissionDialog:{DialogTitle:1,Grant:1,Permission:1,Revoke:1,SaveSuccess:1},UserRoleDialog:{DialogTitle:1,SaveSuccess:1},ValidationError:{Title:1}},Validation:{AuthenticationError:1,CantFindUserWithEmail:1,CurrentPasswordMismatch:1,DeleteForeignKeyError:1,EmailConfirm:1,EmailInUse:1,InvalidActivateToken:1,InvalidResetToken:1,MinRequiredPasswordLength:1,SavePrimaryKeyError:1}});
 }

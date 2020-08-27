@@ -14,7 +14,8 @@ namespace Serene_Web_App.Migrations.DefaultDB
                     .Identity().PrimaryKey().NotNullable()
                 .WithColumn("Name").AsString(200).NotNullable()
                 .WithColumn("Phone").AsString(35).Nullable()
-                .WithColumn("Address").AsString(1000).Nullable();
+                .WithColumn("Address").AsString(1000).Nullable()
+                .WithColumn("PrimaryImage").AsString(100).Nullable();
 
             Alter.Table("Product").InSchema("inv")
                 .AddColumn("SupplierId").AsInt32().Nullable()

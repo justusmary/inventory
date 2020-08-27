@@ -69,7 +69,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Unit[this] = value; }
         }
 
-        [DisplayName("Price")]
+        [DisplayName("Price"), LookupInclude]
         public Int32? Price
         {
             get { return Fields.Price[this]; }
@@ -77,7 +77,7 @@ namespace Serene_Web_App.Inventory.Entities
         }
 
         [DisplayName("Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
-        [LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
+        [LookupEditor(typeof(SupplierRow), InplaceAdd = true), LookupInclude]
         [Insertable(false), Updatable(false)]
         public Int32? SupplierId
         {

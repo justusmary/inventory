@@ -15,8 +15,38 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "inv.Customer",
+          "Identifier": "Customer",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "inv.OrderItem",
+          "Identifier": "OrderItem",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "inv.Product",
           "Identifier": "Product",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "inv.ProductOrder",
+          "Identifier": "ProductOrder",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "inv.PurchaseOrder",
+          "Identifier": "PurchaseOrder",
+          "Module": "Inventory",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "inv.Shipment",
+          "Identifier": "Shipment",
           "Module": "Inventory",
           "PermissionKey": "Administration:General"
         },

@@ -8135,3 +8135,33 @@ section.content > .s-DataGrid {
 .main-header .logo i {
   display: none;
 }
+.s-Inventory-CustomerDialog > .size {
+  width: 650px;
+}
+.s-Inventory-CustomerDialog .caption {
+  width: 150px;
+}
+.s-Inventory-ProductOrderDialog > .size {
+  width: 650px;
+}
+.s-Inventory-ProductOrderDialog .caption {
+  width: 150px;
+}
+.s-Inventory-PurchaseOrderDialog > .size {
+  width: 650px;
+}
+.s-Inventory-PurchaseOrderDialog .caption {
+  width: 150px;
+}
+.s-Inventory-OrderItemDialog > .size {
+  width: 650px;
+}
+.s-Inventory-OrderItemDialog .caption {
+  width: 150px;
+}
+.s-Inventory-ShipmentDialog > .size {
+  width: 650px;
+}
+.s-Inventory-ShipmentDialog .caption {
+  width: 150px;
+}

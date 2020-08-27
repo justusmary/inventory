@@ -60,9 +60,34 @@ namespace MVC
                 public const string CategoryIndex = "~/Modules/Inventory/Category/CategoryIndex.cshtml";
             }
 
+            public static class Customer
+            {
+                public const string CustomerIndex = "~/Modules/Inventory/Customer/CustomerIndex.cshtml";
+            }
+
+            public static class OrderItem
+            {
+                public const string OrderItemIndex = "~/Modules/Inventory/OrderItem/OrderItemIndex.cshtml";
+            }
+
             public static class Product
             {
                 public const string ProductIndex = "~/Modules/Inventory/Product/ProductIndex.cshtml";
+            }
+
+            public static class ProductOrder
+            {
+                public const string ProductOrderIndex = "~/Modules/Inventory/ProductOrder/ProductOrderIndex.cshtml";
+            }
+
+            public static class PurchaseOrder
+            {
+                public const string PurchaseOrderIndex = "~/Modules/Inventory/PurchaseOrder/PurchaseOrderIndex.cshtml";
+            }
+
+            public static class Shipment
+            {
+                public const string ShipmentIndex = "~/Modules/Inventory/Shipment/ShipmentIndex.cshtml";
             }
 
             public static class Supplier

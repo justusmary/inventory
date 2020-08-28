@@ -14,7 +14,7 @@ namespace Serene_Web_App.Inventory.Entities
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Product]")]
     [DisplayName("Products"), InstanceName("Product")]
     [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.SupplierAdmin)]
     [LookupScript("Inventory.Product", LookupType = typeof(MultiSupplierRowLookupScript<>))]
     public sealed class ProductRow : Row, IIdRow, INameRow, IMultiSupplierRow
     {
@@ -77,8 +77,7 @@ namespace Serene_Web_App.Inventory.Entities
         }
 
         [DisplayName("Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
-        [LookupEditor(typeof(SupplierRow), InplaceAdd = true), LookupInclude]
-        [Insertable(false), Updatable(false)]
+        [LookupEditor(typeof(MultiSupplierLookup), InplaceAdd = true), LookupInclude]
         public Int32? SupplierId
         {
             get { return Fields.SupplierId[this]; }

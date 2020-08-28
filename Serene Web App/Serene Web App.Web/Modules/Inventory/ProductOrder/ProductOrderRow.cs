@@ -1,6 +1,8 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
+    using Serene_Web_App.Administration;
+    using Serene_Web_App.Inventory.Scripts;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -11,9 +13,11 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[ProductOrder]")]
     [DisplayName("Product Order"), InstanceName("Product Order")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
-    public sealed class ProductOrderRow : Row, IIdRow
+    [ReadPermission(PermissionKeys.Store)]
+    [InsertPermission(PermissionKeys.StoreHQ)]
+    [ModifyPermission(PermissionKeys.StoreAdmin)]
+    [LookupScript("Inventory.ProductOrder", LookupType = typeof(MultiSupplierRowLookupScript<>))]
+    public sealed class ProductOrderRow : Row, IIdRow, IMultiSupplierRow
     {
         [DisplayName("Product Order Id"), Identity]
         public Int32? ProductOrderId
@@ -22,7 +26,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.ProductOrderId[this] = value; }
         }
 
-        [LookupEditor(typeof(ProductRow))]
+        [LookupEditor(typeof(ProductListLookup))]
         [DisplayName("Product"), NotNull, ForeignKey("[inv].[Product]", "ProductId"), LeftJoin("jProduct"), TextualField("ProductName")]
         public Int32? ProductId
         {
@@ -126,6 +130,11 @@ namespace Serene_Web_App.Inventory.Entities
         IIdField IIdRow.IdField
         {
             get { return Fields.ProductOrderId; }
+        }
+
+        public Int32Field SupplierIdField
+        {
+            get { return Fields.SupplierId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

@@ -27,9 +27,6 @@ namespace Serene_Web_App.Inventory {
                     var temp = ProductRow.getLookup().itemById[ProductId].SupplierId.toString();
                     this.form.SupplierId.value = ProductRow.getLookup().itemById[ProductId].SupplierId.toString();
                     this.form.TotalAmount.value = ProductRow.getLookup().itemById[ProductId].Price * this.form.Quantity.value;
-
-                    //this.form.SupplierId.filterField = "ProductId";
-                    //this.form.SupplierId.filterValue = this.form.ProductId.value;
                 }
             });
 

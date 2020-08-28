@@ -21,10 +21,27 @@ namespace Serene_Web_App.Inventory.Scripts
         protected override void PrepareQuery(SqlQuery query)
         {
             base.PrepareQuery(query);
-            AddProductSupplierFilter(query);
+            if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+            {
+                AddProductSupplierFilter(query);
+            }
         }
 
         protected void AddProductSupplierFilter(SqlQuery query)
+        {
+            var r = new TRow();
+            query.Where(r.SupplierIdField ==
+                ((UserDefinition)Authorization.UserDefinition).SupplierId);
+        }
+
+        protected void AddMultiSupplierFilter(SqlQuery query)
+        {
+            var r = new TRow();
+            query.Where(r.SupplierIdField ==
+                ((UserDefinition)Authorization.UserDefinition).SupplierId);
+        }
+
+        protected void AddProductOrderFilter(SqlQuery query)
         {
             var r = new TRow();
             query.Where(r.SupplierIdField ==

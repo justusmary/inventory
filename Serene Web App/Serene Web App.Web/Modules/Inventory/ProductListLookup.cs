@@ -11,26 +11,27 @@ namespace Serene_Web_App.Inventory.Scripts
     using Serenity.Data;
     using Serenity.Web;
 
-    [LookupScript("Inventory.ProductSupplier")]
-    public class ProductSupplierLookup : MultiSupplierRowLookupScript<Entities.ProductRow>
+    [LookupScript("Inventory.ProductList")]
+    public class ProductListLookup : MultiSupplierRowLookupScript<Entities.ProductRow>
     {
-        public ProductSupplierLookup()
+        public ProductListLookup()
         {
-            IdField = TextField = "SupplierId";
+            IdField = "ProductId";
+            TextField = "Name";
         }
 
         protected override void PrepareQuery(SqlQuery query)
         {
             var fld = Entities.ProductRow.Fields;
             query.Distinct(true)
-                .Select(fld.SupplierId)
+                .Select(fld.ProductId, fld.Name)
                 .Where(
                     new Criteria(fld.SupplierId) != "" &
                     new Criteria(fld.SupplierId).IsNotNull());
 
             if (!Authorization.HasPermission(PermissionKeys.Suppliers))
             {
-                AddProductSupplierFilter(query);
+                AddProductOrderFilter(query);
             }
         }
 

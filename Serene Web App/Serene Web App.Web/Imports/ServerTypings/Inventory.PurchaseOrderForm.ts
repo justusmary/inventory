@@ -1,7 +1,6 @@
 ﻿namespace Serene_Web_App.Inventory {
     export interface PurchaseOrderForm {
         CustomerId: Serenity.LookupEditor;
-        Amount: Serenity.DecimalEditor;
         ItemList: OrderItemsEditor;
     }
 
@@ -17,13 +16,11 @@
 
                 var s = Serenity;
                 var w0 = s.LookupEditor;
-                var w1 = s.DecimalEditor;
-                var w2 = OrderItemsEditor;
+                var w1 = OrderItemsEditor;
 
                 Q.initFormType(PurchaseOrderForm, [
                     'CustomerId', w0,
-                    'Amount', w1,
-                    'ItemList', w2
+                    'ItemList', w1
                 ]);
             }
         }

@@ -852,7 +852,6 @@ declare namespace Serene_Web_App.Inventory {
 declare namespace Serene_Web_App.Inventory {
     interface PurchaseOrderForm {
         CustomerId: Serenity.LookupEditor;
-        Amount: Serenity.DecimalEditor;
         ItemList: OrderItemsEditor;
     }
     class PurchaseOrderForm extends Serenity.PrefixedContext {
@@ -935,6 +934,8 @@ declare namespace Serene_Web_App.Inventory {
         Shipped?: boolean;
         PurchaseOrderAmount?: number;
         PurchaseOrderDate?: string;
+        CustomerId?: number;
+        CustomerName?: string;
     }
     namespace ShipmentRow {
         const idProperty = "ShipmentId";
@@ -952,7 +953,9 @@ declare namespace Serene_Web_App.Inventory {
             Date = "Date",
             Shipped = "Shipped",
             PurchaseOrderAmount = "PurchaseOrderAmount",
-            PurchaseOrderDate = "PurchaseOrderDate"
+            PurchaseOrderDate = "PurchaseOrderDate",
+            CustomerId = "CustomerId",
+            CustomerName = "CustomerName"
         }
     }
 }

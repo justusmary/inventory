@@ -8,6 +8,8 @@
         Shipped?: boolean;
         PurchaseOrderAmount?: number;
         PurchaseOrderDate?: string;
+        CustomerId?: number;
+        CustomerName?: string;
     }
 
     export namespace ShipmentRow {
@@ -27,7 +29,9 @@
             Date = "Date",
             Shipped = "Shipped",
             PurchaseOrderAmount = "PurchaseOrderAmount",
-            PurchaseOrderDate = "PurchaseOrderDate"
+            PurchaseOrderDate = "PurchaseOrderDate",
+            CustomerId = "CustomerId",
+            CustomerName = "CustomerName"
         }
     }
 }

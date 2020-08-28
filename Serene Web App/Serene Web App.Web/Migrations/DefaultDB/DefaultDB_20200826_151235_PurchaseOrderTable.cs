@@ -15,7 +15,7 @@ namespace Serene_Web_App.Migrations.DefaultDB
                 .WithColumn("CustomerId").AsInt32().NotNullable()
                     .ForeignKey("FK_PurchaseOrder_CustomerId", "inv", "Customer", "CustomerId")
                 .WithColumn("Amount").AsDecimal().NotNullable()
-                .WithColumn("Date").AsDateTime().NotNullable();
+                .WithColumn("Date").AsDateTime().Nullable();
                 
         }
 

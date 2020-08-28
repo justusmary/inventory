@@ -45,6 +45,7 @@ namespace Serene_Web_App.Inventory.Repositories
                 if (base.IsCreate)
                 {
                     base.Row.Date = DateTime.Now;
+                    base.Row.ShippedDate = DateTime.Now;
                     
                     decimal amount = 0;
                     foreach (var item in base.Row.ItemList)
@@ -70,19 +71,7 @@ namespace Serene_Web_App.Inventory.Repositories
                             Quantity = pRow.Entity.Quantity - item.Quantity
                         });
                     }
-
-                    var customer = new CustomerRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.CustomerId });
-
-                    UnitOfWork.Connection.InsertAndGetID(new ShipmentRow()
-                    {
-                        PurchaseOrderId = base.Row.PurchaseOrderId,
-                        TotalAmount = base.Row.Amount,
-                        Date = DateTime.Now,
-                        Shipped = true,
-                        DestinationAddress = customer.Entity.Address
-                    });
                 }
-                
             }
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }

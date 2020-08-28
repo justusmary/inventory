@@ -28,7 +28,7 @@
             <a href="/inventory/product" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
-    @if (Authorization.HasPermission(PermissionKeys.Suppliers))
+    @if (Authorization.HasPermission(PermissionKeys.SuppliersAdd))
     {
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
@@ -41,6 +41,51 @@
                     <i class="ion ion-pie-graph"></i>
                 </div>
                 <a href="/inventory/supplier" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    }
+    @if (Authorization.HasPermission(PermissionKeys.Customer))
+    {
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@Model.CustomerCount</h3>
+                    <p>Total Customers</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="/inventory/customer" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3>@Model.PurchaseOrderCount</h3>
+                    <p>Purchase Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="/inventory/purchaseorder" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    }
+    @if (Authorization.HasPermission(PermissionKeys.Store))
+    {
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@Model.ProductOrderCount</h3>
+                    <p>Product Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="/inventory/productorder" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
     }

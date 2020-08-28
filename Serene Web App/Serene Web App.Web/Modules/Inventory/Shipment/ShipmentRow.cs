@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Entities
 {
+    using Serene_Web_App.Administration;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -11,8 +12,9 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Shipment]")]
     [DisplayName("Shipment"), InstanceName("Shipment")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Customer)]
+    [InsertPermission(PermissionKeys.Customer)]
+    [ModifyPermission(PermissionKeys.CustomerAdmin)]
     public sealed class ShipmentRow : Row, IIdRow, INameRow
     {
         [DisplayName("Shipment Id"), Identity]

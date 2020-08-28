@@ -26,6 +26,43 @@ namespace Serene_Web_App.Common
                     return connection.List<SupplierRow>().Count;
                 }
             }
-            set { } }
+            set { } 
+        }
+
+        public int PurchaseOrderCount
+        {
+            get
+            {
+                using (var connection = SqlConnections.NewFor<PurchaseOrderRow>())
+                {
+                    return connection.List<PurchaseOrderRow>().Count;
+                }
+            }
+            set { }
+        }
+
+        public int CustomerCount
+        {
+            get
+            {
+                using (var connection = SqlConnections.NewFor<CustomerRow>())
+                {
+                    return connection.List<CustomerRow>().Count;
+                }
+            }
+            set { }
+        }
+
+        public int ProductOrderCount
+        {
+            get
+            {
+                using (var connection = SqlConnections.NewFor<ProductOrderRow>())
+                {
+                    return new ProductOrderRepository().List(connection, new ListRequest()).TotalCount;
+                }
+            }
+            set { }
+        }
     }
 }

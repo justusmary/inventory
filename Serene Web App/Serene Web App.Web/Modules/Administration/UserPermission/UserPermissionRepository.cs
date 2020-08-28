@@ -246,7 +246,10 @@ namespace Serene_Web_App.Administration.Repositories
                     }
                 }
 
-                result.Remove(Administration.PermissionKeys.Suppliers);
+                if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+                {
+                    result.Remove(Administration.PermissionKeys.Suppliers);
+                }
                 result.Remove("*");
                 result.Remove("?");
 

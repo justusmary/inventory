@@ -16,10 +16,10 @@
         export function getLookup(): Q.Lookup<SupplierRow> {
             return Q.getLookup<SupplierRow>('Inventory.Supplier');
         }
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:Suppliers';
+        export const deletePermission = 'Administration:SuppliersModify';
+        export const insertPermission = 'Administration:SuppliersAdd';
         export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const updatePermission = 'Administration:SuppliersModify';
 
         export declare const enum Fields {
             SupplierId = "SupplierId",

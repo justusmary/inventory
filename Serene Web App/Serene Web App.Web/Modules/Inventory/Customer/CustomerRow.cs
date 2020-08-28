@@ -23,7 +23,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.CustomerId[this] = value; }
         }
 
-        [DisplayName("Name"), Size(200), NotNull, QuickSearch]
+        [DisplayName("Name"), Size(200), NotNull, QuickSearch, LookupInclude]
         public String Name
         {
             get { return Fields.Name[this]; }

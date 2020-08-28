@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Repositories
 {
+    using Serene_Web_App.Inventory.Entities;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
@@ -37,7 +38,8 @@ namespace Serene_Web_App.Inventory.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> {
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
             protected override void BeforeSave()
             {
                 base.BeforeSave();
@@ -45,7 +47,51 @@ namespace Serene_Web_App.Inventory.Repositories
                 {
                     base.Row.Date = DateTime.Now;
                 }
-                base.Row.Date = DateTime.Now;
+            }
+
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+                if (base.IsCreate)
+                {
+                    var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.ProductId });
+                    var newVal = base.Row.Fulfilled;
+
+                    if (newVal == true)
+                    {
+                        UnitOfWork.Connection.UpdateById(new ProductRow()
+                        {
+                            ProductId = base.Row.ProductId,
+                            Quantity = pRow.Entity.Quantity + base.Row.Quantity
+                        });
+                    }
+                }
+
+                if (base.IsUpdate)
+                {
+
+                    var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.ProductId });
+                    var oldVal = base.Old.Fulfilled;
+                    var newVal = base.Row.Fulfilled;
+
+                    if (oldVal == false && newVal == true)
+                    {
+                        UnitOfWork.Connection.UpdateById(new ProductRow()
+                        {
+                            ProductId = base.Row.ProductId,
+                            Quantity = pRow.Entity.Quantity + base.Row.Quantity
+                        });
+                    }
+
+                    else if (oldVal == true && newVal == false)
+                    {
+                        UnitOfWork.Connection.UpdateById(new ProductRow()
+                        {
+                            ProductId = base.Row.ProductId,
+                            Quantity = pRow.Entity.Quantity - base.Row.Quantity
+                        });
+                    }
+                }
             }
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }

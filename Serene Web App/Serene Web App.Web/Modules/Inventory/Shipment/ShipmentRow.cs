@@ -36,6 +36,20 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.TotalAmount[this] = value; }
         }
 
+        [Expression("jPurchaseOrder.[CustomerID]"), ForeignKey("[inv].[Customer]", "CustomerId"), LeftJoin("c")]
+        public Int32? CustomerId
+        {
+            get { return Fields.CustomerId[this]; }
+            set { Fields.CustomerId[this] = value; }
+        }
+
+        [Expression("c.Name")]
+        public String CustomerName
+        {
+            get { return Fields.CustomerName[this]; }
+            set { Fields.CustomerName[this] = value; }
+        }
+
         [DisplayName("Destination Address"), Size(255), NotNull, QuickSearch]
         public String DestinationAddress
         {
@@ -99,6 +113,8 @@ namespace Serene_Web_App.Inventory.Entities
 
             public DecimalField PurchaseOrderAmount;
             public DateTimeField PurchaseOrderDate;
+            public Int32Field CustomerId;
+            public StringField CustomerName;
         }
     }
 }

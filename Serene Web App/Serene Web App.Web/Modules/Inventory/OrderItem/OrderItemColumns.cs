@@ -13,7 +13,8 @@ namespace Serene_Web_App.Inventory.Columns
     [BasedOnRow(typeof(Entities.OrderItemRow), CheckNames = true)]
     public class OrderItemColumns
     {
-        [EditLink, DisplayName("Product"), AlignCenter]
+        [RowIndexFormatter, EditLink, AlignCenter]
+        public Int32 OrderItemId { get; set; }
         public String ProductName { get; set; }
         public Int32 Quantity { get; set; }
         public Decimal UnitPrice { get; set; }

@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Repositories
 {
+    using Serene_Web_App.Inventory.Entities;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
@@ -44,8 +45,44 @@ namespace Serene_Web_App.Inventory.Repositories
                 if (base.IsCreate)
                 {
                     base.Row.Date = DateTime.Now;
+                    
+                    decimal amount = 0;
+                    foreach (var item in base.Row.ItemList)
+                    {
+                        amount += item.LineTotal.Value;  
+                    }
+                    base.Row.Amount = amount;
                 }
-                base.Row.Date = DateTime.Now;
+            }
+
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+                           
+                if (base.IsCreate)
+                {
+                    foreach (var item in base.Row.ItemList)
+                    {
+                        var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = item.ProductId });
+                        UnitOfWork.Connection.UpdateById(new ProductRow()
+                        {
+                            ProductId = item.ProductId,
+                            Quantity = pRow.Entity.Quantity - item.Quantity
+                        });
+                    }
+
+                    var customer = new CustomerRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.CustomerId });
+
+                    UnitOfWork.Connection.InsertAndGetID(new ShipmentRow()
+                    {
+                        PurchaseOrderId = base.Row.PurchaseOrderId,
+                        TotalAmount = base.Row.Amount,
+                        Date = DateTime.Now,
+                        Shipped = true,
+                        DestinationAddress = customer.Entity.Address
+                    });
+                }
+                
             }
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }

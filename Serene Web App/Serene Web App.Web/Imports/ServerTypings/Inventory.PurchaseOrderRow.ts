@@ -6,6 +6,9 @@
         Date?: string;
         CustomerName?: string;
         ItemList?: OrderItemRow[];
+        DestinationAddress?: string;
+        ShippedDate?: string;
+        Shipped?: boolean;
     }
 
     export namespace PurchaseOrderRow {
@@ -22,7 +25,10 @@
             Amount = "Amount",
             Date = "Date",
             CustomerName = "CustomerName",
-            ItemList = "ItemList"
+            ItemList = "ItemList",
+            DestinationAddress = "DestinationAddress",
+            ShippedDate = "ShippedDate",
+            Shipped = "Shipped"
         }
     }
 }

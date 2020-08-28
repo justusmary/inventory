@@ -85,11 +85,6 @@ namespace MVC
                 public const string PurchaseOrderIndex = "~/Modules/Inventory/PurchaseOrder/PurchaseOrderIndex.cshtml";
             }
 
-            public static class Shipment
-            {
-                public const string ShipmentIndex = "~/Modules/Inventory/Shipment/ShipmentIndex.cshtml";
-            }
-
             public static class Supplier
             {
                 public const string SupplierIndex = "~/Modules/Inventory/Supplier/SupplierIndex.cshtml";

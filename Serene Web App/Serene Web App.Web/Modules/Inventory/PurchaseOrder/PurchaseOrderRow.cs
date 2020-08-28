@@ -25,6 +25,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.PurchaseOrderId[this] = value; }
         }
 
+        [ReadOnly(true), Insertable(false)]
         [DisplayName("Amount"), Size(19), Scale(5)]
         public Decimal? Amount
         {
@@ -32,7 +33,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Amount[this] = value; }
         }
 
-        [LookupEditor(typeof(CustomerRow))]
+        [LookupEditor(typeof(CustomerRow)), Updatable(false)]
         [DisplayName("Customer"), NotNull, ForeignKey("[inv].[Customer]", "CustomerId"), LeftJoin("jCustomer"), TextualField("CustomerName")]
         public Int32? CustomerId
         {
@@ -47,6 +48,29 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.CustomerName[this] = value; }
         }
 
+        [ReadOnly(true)]
+        [DisplayName("Destination Address"), Expression("jCustomer.[Address]")]
+        public String DestinationAddress
+        {
+            get { return Fields.DestinationAddress[this]; }
+            set { Fields.DestinationAddress[this] = value; }
+        }
+
+        [ReadOnly(true)]
+        [DisplayName("Shpped Date"), DefaultValue("now")]
+        public DateTime? ShippedDate
+        {
+            get { return Fields.ShippedDate[this]; }
+            set { Fields.ShippedDate[this] = value; }
+        }
+
+        [DisplayName("Shipped"), NotNull]
+        public Boolean? Shipped
+        {
+            get { return Fields.Shipped[this]; }
+            set { Fields.Shipped[this] = value; }
+        }
+
         [DisplayName("Date"), NotNull, Insertable(false), Updatable(false)]
         public DateTime? Date
         {
@@ -54,6 +78,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Date[this] = value; }
         }
 
+        [Updatable(false)]
         [DisplayName("Items"), MasterDetailRelation(foreignKey: "PurchaseOrderID"), NotMapped]
         public List<OrderItemRow> ItemList
         {
@@ -82,6 +107,9 @@ namespace Serene_Web_App.Inventory.Entities
             public StringField CustomerName;
 
             public RowListField<OrderItemRow> ItemList;
+            public StringField DestinationAddress;
+            public DateTimeField ShippedDate;
+            public BooleanField Shipped;
         }
     }
 }

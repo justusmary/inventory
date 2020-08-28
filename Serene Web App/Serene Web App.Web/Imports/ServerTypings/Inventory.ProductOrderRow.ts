@@ -20,10 +20,15 @@
     export namespace ProductOrderRow {
         export const idProperty = 'ProductOrderId';
         export const localTextPrefix = 'Inventory.ProductOrder';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const lookupKey = 'Inventory.ProductOrder';
+
+        export function getLookup(): Q.Lookup<ProductOrderRow> {
+            return Q.getLookup<ProductOrderRow>('Inventory.ProductOrder');
+        }
+        export const deletePermission = 'Administrator:StoreAdm';
+        export const insertPermission = 'Administrator:StoreHQ';
+        export const readPermission = 'Administrator:Store';
+        export const updatePermission = 'Administrator:StoreAdm';
 
         export declare const enum Fields {
             ProductOrderId = "ProductOrderId",

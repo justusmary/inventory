@@ -13,8 +13,8 @@ namespace Serene_Web_App.Inventory.Entities
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Supplier]")]
     [DisplayName("Suppliers"), InstanceName("Supplier")]
     [ReadPermission(PermissionKeys.General)]
-    [InsertPermission(PermissionKeys.Suppliers)]
-    [ModifyPermission(PermissionKeys.General)]
+    [InsertPermission(PermissionKeys.SuppliersAdd)]
+    [ModifyPermission(PermissionKeys.SuppliersMod)]
     [LookupScript("Inventory.Supplier")]
     public sealed class SupplierRow : Row, IIdRow, INameRow, IMultiSupplierRow
     {
@@ -33,7 +33,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.SupplierId[this] = value; }
         }
 
-        [DisplayName("Name"), Size(200), NotNull, QuickSearch]
+        [DisplayName("Name"), Size(200), NotNull, QuickSearch, LookupInclude]
         public String Name
         {
             get { return Fields.Name[this]; }

@@ -17,7 +17,6 @@ namespace Serene_Web_App.Inventory.Forms
         public Int32 SupplierId { get; set; }
         public Int32 Quantity { get; set; }
         public Decimal TotalAmount { get; set; }
-        //public DateTime Date { get; set; }
         public Boolean Fulfilled { get; set; }
     }
 }

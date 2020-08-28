@@ -15,6 +15,7 @@ namespace Serene_Web_App.Inventory.Columns
     {
         [RowIndexFormatter, EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ShipmentId { get; set; }
+        [EditLink]
         public String CustomerName { get; set; }
         public Decimal TotalAmount { get; set; }
         [EditLink]

@@ -538,10 +538,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Category";
         const lookupKey = "Inventory.Category";
         function getLookup(): Q.Lookup<CategoryRow>;
-        const deletePermission = "Administration:Suppliers";
-        const insertPermission = "Administration:Suppliers";
+        const deletePermission = "Administrator:SuppliersAdm";
+        const insertPermission = "Administrator:SuppliersAdm";
         const readPermission = "Administration:General";
-        const updatePermission = "Administration:Suppliers";
+        const updatePermission = "Administrator:SuppliersAdm";
         const enum Fields {
             CategoryId = "CategoryId",
             Name = "Name"
@@ -592,10 +592,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Customer";
         const lookupKey = "Inventory.Customer";
         function getLookup(): Q.Lookup<CustomerRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Administrator:CustomerAdm";
+        const insertPermission = "Administrator:Customer";
+        const readPermission = "Administrator:Customer";
+        const updatePermission = "Administrator:CustomerAdm";
         const enum Fields {
             CustomerId = "CustomerId",
             Name = "Name",
@@ -753,10 +753,12 @@ declare namespace Serene_Web_App.Inventory {
     namespace ProductOrderRow {
         const idProperty = "ProductOrderId";
         const localTextPrefix = "Inventory.ProductOrder";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const lookupKey = "Inventory.ProductOrder";
+        function getLookup(): Q.Lookup<ProductOrderRow>;
+        const deletePermission = "Administrator:StoreAdm";
+        const insertPermission = "Administrator:StoreHQ";
+        const readPermission = "Administrator:Store";
+        const updatePermission = "Administrator:StoreAdm";
         const enum Fields {
             ProductOrderId = "ProductOrderId",
             ProductId = "ProductId",
@@ -812,10 +814,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Product";
         const lookupKey = "Inventory.Product";
         function getLookup(): Q.Lookup<ProductRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
+        const deletePermission = "Administrator:SuppliersAdm";
+        const insertPermission = "Administrator:SuppliersAdm";
         const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const updatePermission = "Administrator:SuppliersAdm";
         const enum Fields {
             ProductId = "ProductId",
             Name = "Name",
@@ -877,10 +879,10 @@ declare namespace Serene_Web_App.Inventory {
     namespace PurchaseOrderRow {
         const idProperty = "PurchaseOrderId";
         const localTextPrefix = "Inventory.PurchaseOrder";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Administrator:CustomerAdm";
+        const insertPermission = "Administrator:Customer";
+        const readPermission = "Administrator:Customer";
+        const updatePermission = "Administrator:CustomerAdm";
         const enum Fields {
             PurchaseOrderId = "PurchaseOrderId",
             CustomerId = "CustomerId",
@@ -941,10 +943,10 @@ declare namespace Serene_Web_App.Inventory {
         const idProperty = "ShipmentId";
         const nameProperty = "DestinationAddress";
         const localTextPrefix = "Inventory.Shipment";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Administrator:CustomerAdm";
+        const insertPermission = "Administrator:Customer";
+        const readPermission = "Administrator:Customer";
+        const updatePermission = "Administrator:CustomerAdm";
         const enum Fields {
             ShipmentId = "ShipmentId",
             PurchaseOrderId = "PurchaseOrderId",
@@ -1007,10 +1009,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Supplier";
         const lookupKey = "Inventory.Supplier";
         function getLookup(): Q.Lookup<SupplierRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:Suppliers";
+        const deletePermission = "Administration:SuppliersModify";
+        const insertPermission = "Administration:SuppliersAdd";
         const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const updatePermission = "Administration:SuppliersModify";
         const enum Fields {
             SupplierId = "SupplierId",
             Name = "Name",

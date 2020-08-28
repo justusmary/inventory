@@ -46,6 +46,8 @@ namespace Serene_Web_App.Inventory.Repositories
                 if (base.IsCreate)
                 {
                     base.Row.Date = DateTime.Now;
+                    var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.ProductId });
+                    base.Row.SupplierId = pRow.Entity.SupplierId;
                 }
             }
 

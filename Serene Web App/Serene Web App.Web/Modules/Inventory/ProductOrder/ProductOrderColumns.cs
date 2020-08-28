@@ -13,7 +13,7 @@ namespace Serene_Web_App.Inventory.Columns
     [BasedOnRow(typeof(Entities.ProductOrderRow), CheckNames = true)]
     public class ProductOrderColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignCenter]
+        [RowIndexFormatter, EditLink, DisplayName("Db.Shared.RecordId"), AlignCenter]
         public Int32 ProductOrderId { get; set; }
         [EditLink]
         public String ProductName { get; set; }

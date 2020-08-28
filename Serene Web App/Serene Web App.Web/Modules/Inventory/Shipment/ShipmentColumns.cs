@@ -13,9 +13,9 @@ namespace Serene_Web_App.Inventory.Columns
     [BasedOnRow(typeof(Entities.ShipmentRow), CheckNames = true)]
     public class ShipmentColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [RowIndexFormatter, EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ShipmentId { get; set; }
-        public Int32 PurchaseOrderId { get; set; }
+        public String CustomerName { get; set; }
         public Decimal TotalAmount { get; set; }
         [EditLink]
         public String DestinationAddress { get; set; }

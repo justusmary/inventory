@@ -23,7 +23,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.PurchaseOrderId[this] = value; }
         }
 
-        [DisplayName("Amount"), Size(19), Scale(5), NotNull]
+        [DisplayName("Amount"), Size(19), Scale(5)]
         public Decimal? Amount
         {
             get { return Fields.Amount[this]; }

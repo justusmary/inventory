@@ -13,13 +13,16 @@ namespace Serene_Web_App.Migrations.DefaultDB
                 .WithColumn("PurchaseOrderId").AsInt32()
                     .Identity().PrimaryKey().NotNullable()
                 .WithColumn("CustomerId").AsInt32().NotNullable()
-                    .ForeignKey("FK_PurchaseOrder_CustomerId", "inv", "Customer", "CustomerId")
+                    .ForeignKey("FK_PurchaseOrder_UserId", "dbo", "Users", "UserId")
                 .WithColumn("Amount").AsDecimal().NotNullable()
                 .WithColumn("Date").AsDateTime().Nullable()
                 .WithColumn("DestinationAddress").AsString().NotNullable()
-                .WithColumn("ShippedDate").AsDateTime().NotNullable()
-                .WithColumn("Shipped").AsBoolean().WithDefaultValue(false);
-                
+                .WithColumn("ShippedDate").AsDateTime().Nullable()
+                .WithColumn("Shipped").AsBoolean().WithDefaultValue(false)
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                    .ForeignKey("FK_PurchaseOrderUpdate_UserId", "dbo", "Users", "UserId")
+                .WithColumn("UpdateDate").AsDateTime().Nullable();
+
         }
 
         public override void Down()

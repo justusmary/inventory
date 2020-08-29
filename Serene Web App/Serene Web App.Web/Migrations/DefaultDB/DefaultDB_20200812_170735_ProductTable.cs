@@ -18,7 +18,13 @@ namespace Serene_Web_App.Migrations.DefaultDB
                 .WithColumn("Quantity").AsInt32().Nullable()
                 .WithColumn("Unit").AsString(20).Nullable()
                 .WithColumn("Price").AsDecimal().Nullable()
-                .WithColumn("PrimaryImage").AsString(100).Nullable();
+                .WithColumn("PrimaryImage").AsString(100).Nullable()
+                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                    .ForeignKey("FK_ProductInsert_UserId", "dbo", "Users", "UserId")
+                .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(DateTime.Now)
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                    .ForeignKey("FK_ProductUpdate_UserId", "dbo", "Users", "UserId")
+                .WithColumn("UpdateDate").AsDateTime().Nullable();
         }
 
         public override void Down()

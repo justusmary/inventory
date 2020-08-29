@@ -2,6 +2,7 @@
 namespace Serene_Web_App.Inventory.Entities
 {
     using Serene_Web_App.Administration;
+    using Serene_Web_App.Administration.Entities;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -33,31 +34,39 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Amount[this] = value; }
         }
 
-        [LookupEditor(typeof(CustomerRow)), Updatable(false)]
-        [DisplayName("Customer"), NotNull, ForeignKey("[inv].[Customer]", "CustomerId"), LeftJoin("jCustomer"), TextualField("CustomerName")]
+        [HideOnInsert(true), Insertable(false)]
+        [LookupEditor(typeof(UserRow)), Updatable(false)]
+        [DisplayName("Customer"), NotNull, ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jCustomer"), TextualField("CustomerName")]
         public Int32? CustomerId
         {
             get { return Fields.CustomerId[this]; }
             set { Fields.CustomerId[this] = value; }
         }
 
-        [DisplayName("Customer Name"), Expression("jCustomer.[Name]")]
+        [DisplayName("Customer Name"), Expression("jCustomer.[DisplayName]")]
         public String CustomerName
         {
             get { return Fields.CustomerName[this]; }
             set { Fields.CustomerName[this] = value; }
         }
 
-        [ReadOnly(true)]
-        [DisplayName("Destination Address"), Expression("jCustomer.[Address]")]
+        [ReadOnly(true), HideOnInsert]
+        [DisplayName("Customer Address"), Expression("jCustomer.[Address]")]
+        public String CustomerAddress
+        {
+            get { return Fields.CustomerAddress[this]; }
+            set { Fields.CustomerAddress[this] = value; }
+        }
+
+        [Updatable(false)]
+        [DisplayName("Shipping Address")]
         public String DestinationAddress
         {
             get { return Fields.DestinationAddress[this]; }
             set { Fields.DestinationAddress[this] = value; }
         }
 
-        [ReadOnly(true)]
-        [DisplayName("Shpped Date"), DefaultValue("now")]
+        [DisplayName("Shipped Date"), DefaultValue("now")]
         public DateTime? ShippedDate
         {
             get { return Fields.ShippedDate[this]; }
@@ -86,6 +95,26 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.ItemList[this] = value; }
         }
 
+        [ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUpdater"), TextualField("UpdateUsername")]
+        public Int32? UpdateUserId
+        {
+            get { return Fields.UpdateUserId[this]; }
+            set { Fields.UpdateUserId[this] = value; }
+        }
+
+        [DisplayName("Updated By"),Expression("jUpdater.[DisplayName]")]
+        public String UpdateUsername
+        {
+            get { return Fields.UpdateUsername[this]; }
+            set { Fields.UpdateUsername[this] = value; }
+        }
+        [DisplayName("Last Updated")]
+        public DateTime? UpdateDate
+        {
+            get { return Fields.UpdateDate[this]; }
+            set { Fields.UpdateDate[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.PurchaseOrderId; }
@@ -108,8 +137,12 @@ namespace Serene_Web_App.Inventory.Entities
 
             public RowListField<OrderItemRow> ItemList;
             public StringField DestinationAddress;
+            public StringField CustomerAddress;
             public DateTimeField ShippedDate;
             public BooleanField Shipped;
+            public Int32Field UpdateUserId;
+            public StringField UpdateUsername;
+            public DateTimeField UpdateDate;
         }
     }
 }

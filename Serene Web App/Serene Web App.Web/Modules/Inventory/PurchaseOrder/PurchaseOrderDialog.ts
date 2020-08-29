@@ -13,6 +13,5 @@ namespace Serene_Web_App.Inventory {
         protected getUpdatePermission() { return PurchaseOrderRow.updatePermission; }
 
         protected form = new PurchaseOrderForm(this.idPrefix);
-
     }
 }

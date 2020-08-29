@@ -1,6 +1,8 @@
 ﻿
 namespace Serene_Web_App.Inventory.Repositories
 {
+    using Serene_Web_App.Administration.Entities;
+    using Serene_Web_App.Administration.Repositories;
     using Serene_Web_App.Inventory.Entities;
     using Serenity;
     using Serenity.Data;
@@ -45,7 +47,12 @@ namespace Serene_Web_App.Inventory.Repositories
                 if (base.IsCreate)
                 {
                     base.Row.Date = DateTime.Now;
-                    base.Row.ShippedDate = DateTime.Now;
+                    base.Row.CustomerId = int.Parse(Authorization.UserId);
+
+                    if(base.Row.DestinationAddress.IsNullOrEmpty())
+                    {
+                        base.Row.DestinationAddress = UnitOfWork.Connection.ById<UserRow>(Authorization.UserId).Address;
+                    }
                     
                     decimal amount = 0;
                     foreach (var item in base.Row.ItemList)
@@ -53,6 +60,12 @@ namespace Serene_Web_App.Inventory.Repositories
                         amount += item.LineTotal.Value;  
                     }
                     base.Row.Amount = amount;
+                }
+
+                if (base.IsUpdate)
+                {
+                    base.Row.UpdateUserId = int.Parse(Authorization.UserId);
+                    base.Row.UpdateDate = DateTime.Now;
                 }
             }
 
@@ -64,11 +77,11 @@ namespace Serene_Web_App.Inventory.Repositories
                 {
                     foreach (var item in base.Row.ItemList)
                     {
-                        var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = item.ProductId });
+                        var pRow = UnitOfWork.Connection.ById <ProductRow>(item.ProductId);
                         UnitOfWork.Connection.UpdateById(new ProductRow()
                         {
                             ProductId = item.ProductId,
-                            Quantity = pRow.Entity.Quantity - item.Quantity
+                            Quantity = pRow.Quantity - item.Quantity
                         });
                     }
                 }

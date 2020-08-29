@@ -127,6 +127,26 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.ProductPrimaryImage[this] = value; }
         }
 
+        [ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUpdater"), TextualField("UpdateUsername")]
+        public Int32? UpdateUserId
+        {
+            get { return Fields.UpdateUserId[this]; }
+            set { Fields.UpdateUserId[this] = value; }
+        }
+
+        [DisplayName("Updated By"), Expression("jUpdater.[DisplayName]")]
+        public String UpdateUsername
+        {
+            get { return Fields.UpdateUsername[this]; }
+            set { Fields.UpdateUsername[this] = value; }
+        }
+        [DisplayName("Last Updated")]
+        public DateTime? UpdateDate
+        {
+            get { return Fields.UpdateDate[this]; }
+            set { Fields.UpdateDate[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ProductOrderId; }
@@ -162,6 +182,9 @@ namespace Serene_Web_App.Inventory.Entities
             public StringField ProductPrimaryImage;
             public Int32Field SupplierId;
             public StringField SupplierName;
+            public Int32Field UpdateUserId;
+            public StringField UpdateUsername;
+            public DateTimeField UpdateDate;
         }
     }
 }

@@ -46,8 +46,14 @@ namespace Serene_Web_App.Inventory.Repositories
                 if (base.IsCreate)
                 {
                     base.Row.Date = DateTime.Now;
-                    var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.ProductId });
-                    base.Row.SupplierId = pRow.Entity.SupplierId;
+                    var pRow = UnitOfWork.Connection.ById<ProductRow>(base.Row.ProductId);
+                    base.Row.SupplierId = pRow.SupplierId;
+                }
+
+                if (base.IsUpdate)
+                {
+                    base.Row.UpdateUserId = int.Parse(Authorization.UserId);
+                    base.Row.UpdateDate = DateTime.Now;
                 }
             }
 
@@ -56,7 +62,7 @@ namespace Serene_Web_App.Inventory.Repositories
                 base.AfterSave();
                 if (base.IsCreate)
                 {
-                    var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.ProductId });
+                    var pRow = UnitOfWork.Connection.ById<ProductRow>(base.Row.ProductId);
                     var newVal = base.Row.Fulfilled;
 
                     if (newVal == true)
@@ -64,7 +70,7 @@ namespace Serene_Web_App.Inventory.Repositories
                         UnitOfWork.Connection.UpdateById(new ProductRow()
                         {
                             ProductId = base.Row.ProductId,
-                            Quantity = pRow.Entity.Quantity + base.Row.Quantity
+                            Quantity = pRow.Quantity + base.Row.Quantity
                         });
                     }
                 }
@@ -72,7 +78,7 @@ namespace Serene_Web_App.Inventory.Repositories
                 if (base.IsUpdate)
                 {
 
-                    var pRow = new ProductRepository().Retrieve(UnitOfWork.Connection, new RetrieveRequest() { EntityId = base.Row.ProductId });
+                    var pRow = UnitOfWork.Connection.ById<ProductRow>(base.Row.ProductId);
                     var oldVal = base.Old.Fulfilled;
                     var newVal = base.Row.Fulfilled;
 
@@ -81,7 +87,7 @@ namespace Serene_Web_App.Inventory.Repositories
                         UnitOfWork.Connection.UpdateById(new ProductRow()
                         {
                             ProductId = base.Row.ProductId,
-                            Quantity = pRow.Entity.Quantity + base.Row.Quantity
+                            Quantity = pRow.Quantity + base.Row.Quantity
                         });
                     }
 
@@ -90,7 +96,7 @@ namespace Serene_Web_App.Inventory.Repositories
                         UnitOfWork.Connection.UpdateById(new ProductRow()
                         {
                             ProductId = base.Row.ProductId,
-                            Quantity = pRow.Entity.Quantity - base.Row.Quantity
+                            Quantity = pRow.Quantity - base.Row.Quantity
                         });
                     }
                 }

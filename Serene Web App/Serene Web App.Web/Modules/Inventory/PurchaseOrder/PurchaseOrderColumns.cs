@@ -19,5 +19,7 @@ namespace Serene_Web_App.Inventory.Columns
         public String CustomerName { get; set; }
         public Decimal Amount { get; set; }
         public DateTime Date { get; set; }
+        public Int32 UpdateUsername { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

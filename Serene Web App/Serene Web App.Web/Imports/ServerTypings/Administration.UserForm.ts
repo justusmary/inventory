@@ -8,6 +8,8 @@
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
         SupplierId: Serenity.LookupEditor;
+        Phone: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
     }
 
     export class UserForm extends Serenity.PrefixedContext {
@@ -35,7 +37,9 @@
                     'Password', w3,
                     'PasswordConfirm', w3,
                     'Source', w0,
-                    'SupplierId', w4
+                    'SupplierId', w4,
+                    'Phone', w0,
+                    'Address', w0
                 ]);
             }
         }

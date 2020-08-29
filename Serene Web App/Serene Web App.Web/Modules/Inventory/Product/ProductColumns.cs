@@ -27,5 +27,9 @@ namespace Serene_Web_App.Inventory.Columns
         public Int32 Price { get; set; }
         [Width(200), QuickFilter]
         public String SupplierName { get; set; }
+        public Int32 InsertUsername { get; set; }
+        public DateTime InsertDate { get; set; }
+        public Int32 UpdateUsername { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

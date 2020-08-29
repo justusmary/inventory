@@ -15,6 +15,9 @@
         ProductPrimaryImage?: string;
         SupplierId?: number;
         SupplierName?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
     }
 
     export namespace ProductOrderRow {
@@ -45,7 +48,10 @@
             ProductCategoryId = "ProductCategoryId",
             ProductPrimaryImage = "ProductPrimaryImage",
             SupplierId = "SupplierId",
-            SupplierName = "SupplierName"
+            SupplierName = "SupplierName",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate"
         }
     }
 }

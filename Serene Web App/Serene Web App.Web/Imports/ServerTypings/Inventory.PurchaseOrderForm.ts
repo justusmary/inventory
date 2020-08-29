@@ -6,6 +6,7 @@
         ShippedDate: Serenity.DateEditor;
         Shipped: Serenity.BooleanEditor;
         DestinationAddress: Serenity.StringEditor;
+        CustomerAddress: Serenity.StringEditor;
     }
 
     export class PurchaseOrderForm extends Serenity.PrefixedContext {
@@ -32,7 +33,8 @@
                     'ItemList', w2,
                     'ShippedDate', w3,
                     'Shipped', w4,
-                    'DestinationAddress', w5
+                    'DestinationAddress', w5,
+                    'CustomerAddress', w5
                 ]);
             }
         }

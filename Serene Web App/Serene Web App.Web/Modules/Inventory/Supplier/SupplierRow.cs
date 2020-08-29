@@ -54,6 +54,46 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Address[this] = value; }
         }
 
+        [ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jInserter"), TextualField("InsertUsername")]
+        public Int32? InsertUserId
+        {
+            get { return Fields.UpdateUserId[this]; }
+            set { Fields.UpdateUserId[this] = value; }
+        }
+
+        [DisplayName("Inserted By"), Expression("jInserter.[DisplayName]")]
+        public String InsertUsername
+        {
+            get { return Fields.InsertUsername[this]; }
+            set { Fields.InsertUsername[this] = value; }
+        }
+
+        public DateTime? InsertDate
+        {
+            get { return Fields.InsertDate[this]; }
+            set { Fields.InsertDate[this] = value; }
+        }
+
+        [ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUpdater"), TextualField("UpdateUsername")]
+        public Int32? UpdateUserId
+        {
+            get { return Fields.UpdateUserId[this]; }
+            set { Fields.UpdateUserId[this] = value; }
+        }
+
+        [DisplayName("Updated By"), Expression("jUpdater.[DisplayName]")]
+        public String UpdateUsername
+        {
+            get { return Fields.UpdateUsername[this]; }
+            set { Fields.UpdateUsername[this] = value; }
+        }
+        [DisplayName("Last Updated")]
+        public DateTime? UpdateDate
+        {
+            get { return Fields.UpdateDate[this]; }
+            set { Fields.UpdateDate[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.SupplierId; }
@@ -83,6 +123,12 @@ namespace Serene_Web_App.Inventory.Entities
             public StringField Phone;
             public StringField Address;
             public readonly StringField PrimaryImage;
+            public Int32Field UpdateUserId;
+            public StringField UpdateUsername;
+            public DateTimeField UpdateDate;
+            public Int32Field InsertUserId;
+            public StringField InsertUsername;
+            public DateTimeField InsertDate;
         }
     }
 }

@@ -116,6 +116,20 @@ namespace Serene_Web_App.Administration.Entities
             set { Fields.SupplierName[this] = value; }
         }
 
+        [DisplayName("Phone"), Size(35)]
+        public String Phone
+        {
+            get { return Fields.Phone[this]; }
+            set { Fields.Phone[this] = value; }
+        }
+
+        [DisplayName("Address"), Size(1000)]
+        public String Address
+        {
+            get { return Fields.Address[this]; }
+            set { Fields.Address[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.UserId; }
@@ -152,6 +166,8 @@ namespace Serene_Web_App.Administration.Entities
             public Int16Field IsActive;
             public readonly Int32Field SupplierId;
             public readonly StringField SupplierName;
+            public StringField Phone;
+            public StringField Address;
 
             public StringField Password;
             public StringField PasswordConfirm;

@@ -15,7 +15,13 @@ namespace Serene_Web_App.Migrations.DefaultDB
                 .WithColumn("Name").AsString(200).NotNullable()
                 .WithColumn("Phone").AsString(35).Nullable()
                 .WithColumn("Address").AsString(1000).Nullable()
-                .WithColumn("PrimaryImage").AsString(100).Nullable();
+                .WithColumn("PrimaryImage").AsString(100).Nullable()
+                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                    .ForeignKey("FK_SupplierInsert_UserId", "dbo", "Users", "UserId")
+                .WithColumn("InsertDate").AsDateTime().NotNullable().WithDefaultValue(DateTime.Now)
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                    .ForeignKey("FK_SupplierUpdate_UserId", "dbo", "Users", "UserId")
+                .WithColumn("UpdateDate").AsDateTime().Nullable();
 
             Alter.Table("Product").InSchema("inv")
                 .AddColumn("SupplierId").AsInt32().Nullable()

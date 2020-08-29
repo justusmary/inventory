@@ -2,6 +2,12 @@
     export interface CategoryRow {
         CategoryId?: number;
         Name?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
+        InsertUserId?: number;
+        InsertUsername?: string;
+        InsertDate?: string;
     }
 
     export namespace CategoryRow {
@@ -20,7 +26,13 @@
 
         export declare const enum Fields {
             CategoryId = "CategoryId",
-            Name = "Name"
+            Name = "Name",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate",
+            InsertUserId = "InsertUserId",
+            InsertUsername = "InsertUsername",
+            InsertDate = "InsertDate"
         }
     }
 }

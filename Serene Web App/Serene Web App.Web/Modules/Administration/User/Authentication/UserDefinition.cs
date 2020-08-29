@@ -19,5 +19,7 @@
         public DateTime? UpdateDate { get; set; }
         public DateTime? LastDirectoryUpdate { get; set; }
         public int SupplierId { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
     }
 }

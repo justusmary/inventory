@@ -12,6 +12,8 @@
         IsActive?: number;
         SupplierId?: number;
         SupplierName?: string;
+        Phone?: string;
+        Address?: string;
         Password?: string;
         PasswordConfirm?: string;
         InsertUserId?: number;
@@ -48,6 +50,8 @@
             IsActive = "IsActive",
             SupplierId = "SupplierId",
             SupplierName = "SupplierName",
+            Phone = "Phone",
+            Address = "Address",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
             InsertUserId = "InsertUserId",

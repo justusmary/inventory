@@ -19,5 +19,7 @@
         [OneWay]
         public string Source { get; set; }
         public Int32? SupplierId { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
     }
 }

@@ -29,5 +29,6 @@ namespace Serene_Web_App.Inventory.Forms
 
         [Category("Ship To")]
         public String DestinationAddress { get; set; }
+        public String CustomerAddress { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Serene_Web_App.Migrations.DefaultDB
             Alter.Table("PurchaseOrder").InSchema("inv")
                 .AddColumn("DestinationAddress").AsString().NotNullable().WithDefaultValue("Lagos")
                 .AddColumn("ShippedDate").AsDateTime().NotNullable().WithDefaultValue(DateTime.Now)
-                .AddColumn("Shipped").AsBoolean().WithDefaultValue(true);
+                .AddColumn("Shipped").AsBoolean().WithDefaultValue(false);
         }
 
         public override void Down()

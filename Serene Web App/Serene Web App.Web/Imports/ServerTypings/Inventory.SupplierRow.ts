@@ -5,6 +5,12 @@
         Phone?: string;
         Address?: string;
         PrimaryImage?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
+        InsertUserId?: number;
+        InsertUsername?: string;
+        InsertDate?: string;
     }
 
     export namespace SupplierRow {
@@ -26,7 +32,13 @@
             Name = "Name",
             Phone = "Phone",
             Address = "Address",
-            PrimaryImage = "PrimaryImage"
+            PrimaryImage = "PrimaryImage",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate",
+            InsertUserId = "InsertUserId",
+            InsertUsername = "InsertUsername",
+            InsertDate = "InsertDate"
         }
     }
 }

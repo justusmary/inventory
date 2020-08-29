@@ -10,6 +10,12 @@
         SupplierId?: number;
         SupplierName?: string;
         PrimaryImage?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
+        InsertUserId?: number;
+        InsertUsername?: string;
+        InsertDate?: string;
     }
 
     export namespace ProductRow {
@@ -36,7 +42,13 @@
             CategoryName = "CategoryName",
             SupplierId = "SupplierId",
             SupplierName = "SupplierName",
-            PrimaryImage = "PrimaryImage"
+            PrimaryImage = "PrimaryImage",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate",
+            InsertUserId = "InsertUserId",
+            InsertUsername = "InsertUsername",
+            InsertDate = "InsertDate"
         }
     }
 }

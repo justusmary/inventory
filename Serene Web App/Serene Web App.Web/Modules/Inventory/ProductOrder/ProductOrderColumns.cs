@@ -22,5 +22,7 @@ namespace Serene_Web_App.Inventory.Columns
         public DateTime Date { get; set; }
         public String SupplierName { get; set; }
         public Boolean Fulfilled { get; set; }
+        public Int32 UpdateUsername { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

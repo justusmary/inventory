@@ -250,6 +250,8 @@ declare namespace Serene_Web_App.Administration {
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
         SupplierId: Serenity.LookupEditor;
+        Phone: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
     }
     class UserForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -378,6 +380,8 @@ declare namespace Serene_Web_App.Administration {
         IsActive?: number;
         SupplierId?: number;
         SupplierName?: string;
+        Phone?: string;
+        Address?: string;
         Password?: string;
         PasswordConfirm?: string;
         InsertUserId?: number;
@@ -409,6 +413,8 @@ declare namespace Serene_Web_App.Administration {
             IsActive = "IsActive",
             SupplierId = "SupplierId",
             SupplierName = "SupplierName",
+            Phone = "Phone",
+            Address = "Address",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
             InsertUserId = "InsertUserId",
@@ -531,6 +537,12 @@ declare namespace Serene_Web_App.Inventory {
     interface CategoryRow {
         CategoryId?: number;
         Name?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
+        InsertUserId?: number;
+        InsertUsername?: string;
+        InsertDate?: string;
     }
     namespace CategoryRow {
         const idProperty = "CategoryId";
@@ -544,7 +556,13 @@ declare namespace Serene_Web_App.Inventory {
         const updatePermission = "Administrator:SuppliersAdm";
         const enum Fields {
             CategoryId = "CategoryId",
-            Name = "Name"
+            Name = "Name",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate",
+            InsertUserId = "InsertUserId",
+            InsertUsername = "InsertUsername",
+            InsertDate = "InsertDate"
         }
     }
 }
@@ -749,6 +767,9 @@ declare namespace Serene_Web_App.Inventory {
         ProductPrimaryImage?: string;
         SupplierId?: number;
         SupplierName?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
     }
     namespace ProductOrderRow {
         const idProperty = "ProductOrderId";
@@ -774,7 +795,10 @@ declare namespace Serene_Web_App.Inventory {
             ProductCategoryId = "ProductCategoryId",
             ProductPrimaryImage = "ProductPrimaryImage",
             SupplierId = "SupplierId",
-            SupplierName = "SupplierName"
+            SupplierName = "SupplierName",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -807,6 +831,12 @@ declare namespace Serene_Web_App.Inventory {
         SupplierId?: number;
         SupplierName?: string;
         PrimaryImage?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
+        InsertUserId?: number;
+        InsertUsername?: string;
+        InsertDate?: string;
     }
     namespace ProductRow {
         const idProperty = "ProductId";
@@ -828,7 +858,13 @@ declare namespace Serene_Web_App.Inventory {
             CategoryName = "CategoryName",
             SupplierId = "SupplierId",
             SupplierName = "SupplierName",
-            PrimaryImage = "PrimaryImage"
+            PrimaryImage = "PrimaryImage",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate",
+            InsertUserId = "InsertUserId",
+            InsertUsername = "InsertUsername",
+            InsertDate = "InsertDate"
         }
     }
 }
@@ -859,6 +895,7 @@ declare namespace Serene_Web_App.Inventory {
         ShippedDate: Serenity.DateEditor;
         Shipped: Serenity.BooleanEditor;
         DestinationAddress: Serenity.StringEditor;
+        CustomerAddress: Serenity.StringEditor;
     }
     class PurchaseOrderForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -880,8 +917,12 @@ declare namespace Serene_Web_App.Inventory {
         CustomerName?: string;
         ItemList?: OrderItemRow[];
         DestinationAddress?: string;
+        CustomerAddress?: string;
         ShippedDate?: string;
         Shipped?: boolean;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
     }
     namespace PurchaseOrderRow {
         const idProperty = "PurchaseOrderId";
@@ -898,8 +939,12 @@ declare namespace Serene_Web_App.Inventory {
             CustomerName = "CustomerName",
             ItemList = "ItemList",
             DestinationAddress = "DestinationAddress",
+            CustomerAddress = "CustomerAddress",
             ShippedDate = "ShippedDate",
-            Shipped = "Shipped"
+            Shipped = "Shipped",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -944,6 +989,12 @@ declare namespace Serene_Web_App.Inventory {
         Phone?: string;
         Address?: string;
         PrimaryImage?: string;
+        UpdateUserId?: number;
+        UpdateUsername?: string;
+        UpdateDate?: string;
+        InsertUserId?: number;
+        InsertUsername?: string;
+        InsertDate?: string;
     }
     namespace SupplierRow {
         const idProperty = "SupplierId";
@@ -960,7 +1011,13 @@ declare namespace Serene_Web_App.Inventory {
             Name = "Name",
             Phone = "Phone",
             Address = "Address",
-            PrimaryImage = "PrimaryImage"
+            PrimaryImage = "PrimaryImage",
+            UpdateUserId = "UpdateUserId",
+            UpdateUsername = "UpdateUsername",
+            UpdateDate = "UpdateDate",
+            InsertUserId = "InsertUserId",
+            InsertUsername = "InsertUsername",
+            InsertDate = "InsertDate"
         }
     }
 }

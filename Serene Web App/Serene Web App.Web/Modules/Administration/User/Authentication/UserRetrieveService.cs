@@ -28,7 +28,9 @@
                     PasswordSalt = user.PasswordSalt,
                     UpdateDate = user.UpdateDate,
                     LastDirectoryUpdate = user.LastDirectoryUpdate,
-                    SupplierId = user.SupplierId.Value
+                    SupplierId = user.SupplierId.GetValueOrDefault(),
+                    Phone = user.Phone,
+                    Address = user.Address
                 };
 
             return null;

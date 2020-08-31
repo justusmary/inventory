@@ -9,7 +9,7 @@ namespace Serene_Web_App.Administration.Entities
 
     [ConnectionKey("Default"), Module("Administration"), TableName("Roles")]
     [DisplayName("Roles"), InstanceName("Role")]
-    [ReadPermission(PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.Admin)]
     [ModifyPermission(PermissionKeys.Security)]
     [LookupScript]
     public sealed class RoleRow : Row, IIdRow, INameRow, IMultiSupplierRow

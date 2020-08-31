@@ -246,6 +246,12 @@ namespace Serene_Web_App.Administration.Repositories
                     }
                 }
 
+                if (!Authorization.HasPermission(PermissionKeys.Security) && Authorization.HasPermission(PermissionKeys.Admin))
+                {
+                    result.Remove(PermissionKeys.Security);
+                    result.Remove(PermissionKeys.Translation);
+                    result.Remove(PermissionKeys.General);
+                }
                 if (!Authorization.HasPermission(PermissionKeys.Admin) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
                 {
                     result.Remove(PermissionKeys.Admin);

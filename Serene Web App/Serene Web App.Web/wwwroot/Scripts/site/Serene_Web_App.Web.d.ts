@@ -134,7 +134,7 @@ declare namespace Serene_Web_App.Administration {
         function getLookup(): Q.Lookup<RoleRow>;
         const deletePermission = "Administration:Security";
         const insertPermission = "Administration:Security";
-        const readPermission = "Administration:Security";
+        const readPermission = "Administration:Admin";
         const updatePermission = "Administration:Security";
         const enum Fields {
             RoleId = "RoleId",
@@ -336,10 +336,10 @@ declare namespace Serene_Web_App.Administration {
     namespace UserRoleRow {
         const idProperty = "UserRoleId";
         const localTextPrefix = "Administration.UserRole";
-        const deletePermission = "Administration:Security";
-        const insertPermission = "Administration:Security";
-        const readPermission = "Administration:Security";
-        const updatePermission = "Administration:Security";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "Administration:Admin";
+        const readPermission = "Administration:Admin";
+        const updatePermission = "Administration:Admin";
         const enum Fields {
             UserRoleId = "UserRoleId",
             UserId = "UserId",
@@ -636,8 +636,8 @@ declare namespace Serene_Web_App.Inventory {
         function getLookup(): Q.Lookup<CustomerRow>;
         const deletePermission = "Administration:Security";
         const insertPermission = "Administration:Admin";
-        const readPermission = "User:Customer";
-        const updatePermission = "User:Customer";
+        const readPermission = "Administration:Admin";
+        const updatePermission = "Administration:Admin";
         const enum Fields {
             UserId = "UserId",
             Username = "Username",
@@ -929,7 +929,8 @@ declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
     interface PurchaseOrderForm {
-        CustomerId: Serenity.LookupEditor;
+        CustomerId: Serenity.IntegerEditor;
+        CustomerName: Serenity.StringEditor;
         Amount: Serenity.DecimalEditor;
         ItemList: OrderItemsEditor;
         ShippedDate: Serenity.DateEditor;
@@ -1274,6 +1275,7 @@ declare namespace Serene_Web_App.Administration {
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
+        protected getInserPermission(): string;
         protected getDeletePermission(): string;
         protected form: UserForm;
         constructor();

@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Inventory.Repositories
 {
+    using Serene_Web_App.Administration;
     using Serene_Web_App.Administration.Entities;
     using Serene_Web_App.Administration.Repositories;
     using Serene_Web_App.Inventory.Entities;
@@ -93,6 +94,11 @@ namespace Serene_Web_App.Inventory.Repositories
             protected override void ApplyFilters(SqlQuery query)
             {
                 base.ApplyFilters(query);
+
+                var user = Authorization.UserDefinition;
+
+                if (!Authorization.HasPermission(PermissionKeys.Admin))
+                    query.Where(fld.CustomerId == user.Id);
 
                 if (Request.ProductId != null)
                 {

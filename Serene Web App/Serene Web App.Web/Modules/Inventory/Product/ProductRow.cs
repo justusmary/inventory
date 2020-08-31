@@ -14,6 +14,7 @@ namespace Serene_Web_App.Inventory.Entities
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[Product]")]
     [DisplayName("Products"), InstanceName("Product")]
     [ReadPermission(PermissionKeys.User)]
+    [InsertPermission(PermissionKeys.Supplier)]
     [ModifyPermission(PermissionKeys.Supplier)]
     [DeletePermission(PermissionKeys.Admin)]
     [LookupScript("Inventory.Product", LookupType = typeof(MultiSupplierRowLookupScript<>))]

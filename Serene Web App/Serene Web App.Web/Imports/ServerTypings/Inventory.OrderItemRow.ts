@@ -21,10 +21,10 @@
     export namespace OrderItemRow {
         export const idProperty = 'OrderItemId';
         export const localTextPrefix = 'Inventory.OrderItem';
-        export const deletePermission = 'Administration:General';
-        export const insertPermission = 'Administration:General';
-        export const readPermission = 'Administration:General';
-        export const updatePermission = 'Administration:General';
+        export const deletePermission = 'Administration:Admin';
+        export const insertPermission = 'User:Customer';
+        export const readPermission = 'Administration:User';
+        export const updatePermission = 'Administration:Admin';
 
         export declare const enum Fields {
             OrderItemId = "OrderItemId",

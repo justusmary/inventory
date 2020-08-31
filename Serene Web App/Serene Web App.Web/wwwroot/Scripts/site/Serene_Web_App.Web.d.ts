@@ -279,10 +279,10 @@ declare namespace Serene_Web_App.Administration {
         const idProperty = "UserPermissionId";
         const nameProperty = "PermissionKey";
         const localTextPrefix = "Administration.UserPermission";
-        const deletePermission = "Administration:Security";
-        const insertPermission = "Administration:Security";
-        const readPermission = "Administration:Security";
-        const updatePermission = "Administration:Security";
+        const deletePermission = "Administration:SharedAdmin";
+        const insertPermission = "Administration:SharedAdmin";
+        const readPermission = "Administration:SharedAdmin";
+        const updatePermission = "Administration:SharedAdmin";
         const enum Fields {
             UserPermissionId = "UserPermissionId",
             UserId = "UserId",
@@ -396,10 +396,10 @@ declare namespace Serene_Web_App.Administration {
         const localTextPrefix = "Administration.User";
         const lookupKey = "Administration.User";
         function getLookup(): Q.Lookup<UserRow>;
-        const deletePermission = "Administration:Security";
-        const insertPermission = "Administration:Security";
-        const readPermission = "Administration:Security";
-        const updatePermission = "Administration:Security";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "Administration:SharedAdmin";
+        const readPermission = "Administration:User";
+        const updatePermission = "Administration:User";
         const enum Fields {
             UserId = "UserId",
             Username = "Username",
@@ -550,10 +550,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Category";
         const lookupKey = "Inventory.Category";
         function getLookup(): Q.Lookup<CategoryRow>;
-        const deletePermission = "Administrator:SuppliersAdm";
-        const insertPermission = "Administrator:SuppliersAdm";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administrator:SuppliersAdm";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "User:Supplier";
+        const readPermission = "Administration:User";
+        const updatePermission = "Administration:Admin";
         const enum Fields {
             CategoryId = "CategoryId",
             Name = "Name",
@@ -587,7 +587,14 @@ declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
     interface CustomerForm {
-        Name: Serenity.StringEditor;
+        Username: Serenity.StringEditor;
+        DisplayName: Serenity.StringEditor;
+        Email: Serenity.EmailEditor;
+        UserImage: Serenity.ImageUploadEditor;
+        Password: Serenity.PasswordEditor;
+        PasswordConfirm: Serenity.PasswordEditor;
+        Source: Serenity.StringEditor;
+        SupplierId: Serenity.LookupEditor;
         Phone: Serenity.StringEditor;
         Address: Serenity.StringEditor;
     }
@@ -599,26 +606,59 @@ declare namespace Serene_Web_App.Inventory {
 }
 declare namespace Serene_Web_App.Inventory {
     interface CustomerRow {
-        CustomerId?: number;
-        Name?: string;
+        UserId?: number;
+        Username?: string;
+        Source?: string;
+        PasswordHash?: string;
+        PasswordSalt?: string;
+        DisplayName?: string;
+        Email?: string;
+        UserImage?: string;
+        LastDirectoryUpdate?: string;
+        IsActive?: number;
+        SupplierId?: number;
+        SupplierName?: string;
         Phone?: string;
         Address?: string;
+        Password?: string;
+        PasswordConfirm?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
     }
     namespace CustomerRow {
-        const idProperty = "CustomerId";
-        const nameProperty = "Name";
+        const idProperty = "UserId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Username";
         const localTextPrefix = "Inventory.Customer";
         const lookupKey = "Inventory.Customer";
         function getLookup(): Q.Lookup<CustomerRow>;
-        const deletePermission = "Administrator:CustomerAdm";
-        const insertPermission = "Administrator:Customer";
-        const readPermission = "Administrator:Customer";
-        const updatePermission = "Administrator:CustomerAdm";
+        const deletePermission = "Administration:Security";
+        const insertPermission = "Administration:Admin";
+        const readPermission = "User:Customer";
+        const updatePermission = "User:Customer";
         const enum Fields {
-            CustomerId = "CustomerId",
-            Name = "Name",
+            UserId = "UserId",
+            Username = "Username",
+            Source = "Source",
+            PasswordHash = "PasswordHash",
+            PasswordSalt = "PasswordSalt",
+            DisplayName = "DisplayName",
+            Email = "Email",
+            UserImage = "UserImage",
+            LastDirectoryUpdate = "LastDirectoryUpdate",
+            IsActive = "IsActive",
+            SupplierId = "SupplierId",
+            SupplierName = "SupplierName",
             Phone = "Phone",
-            Address = "Address"
+            Address = "Address",
+            Password = "Password",
+            PasswordConfirm = "PasswordConfirm",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate"
         }
     }
 }
@@ -675,10 +715,10 @@ declare namespace Serene_Web_App.Inventory {
     namespace OrderItemRow {
         const idProperty = "OrderItemId";
         const localTextPrefix = "Inventory.OrderItem";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "User:Customer";
+        const readPermission = "Administration:User";
+        const updatePermission = "Administration:Admin";
         const enum Fields {
             OrderItemId = "OrderItemId",
             PurchaseOrderId = "PurchaseOrderId",
@@ -776,10 +816,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.ProductOrder";
         const lookupKey = "Inventory.ProductOrder";
         function getLookup(): Q.Lookup<ProductOrderRow>;
-        const deletePermission = "Administrator:StoreAdm";
-        const insertPermission = "Administrator:StoreHQ";
-        const readPermission = "Administrator:Store";
-        const updatePermission = "Administrator:StoreAdm";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "Administration:Admin";
+        const readPermission = "User:Supplier";
+        const updatePermission = "Administration:Admin";
         const enum Fields {
             ProductOrderId = "ProductOrderId",
             ProductId = "ProductId",
@@ -844,10 +884,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Product";
         const lookupKey = "Inventory.Product";
         function getLookup(): Q.Lookup<ProductRow>;
-        const deletePermission = "Administrator:SuppliersAdm";
-        const insertPermission = "Administrator:SuppliersAdm";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administrator:SuppliersAdm";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "User:Supplier";
+        const readPermission = "Administration:User";
+        const updatePermission = "User:Supplier";
         const enum Fields {
             ProductId = "ProductId",
             Name = "Name",
@@ -927,10 +967,10 @@ declare namespace Serene_Web_App.Inventory {
     namespace PurchaseOrderRow {
         const idProperty = "PurchaseOrderId";
         const localTextPrefix = "Inventory.PurchaseOrder";
-        const deletePermission = "Administrator:CustomerAdm";
-        const insertPermission = "Administrator:Customer";
-        const readPermission = "Administrator:Customer";
-        const updatePermission = "Administrator:CustomerAdm";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "User:Customer";
+        const readPermission = "User:Customer";
+        const updatePermission = "Administration:Admin";
         const enum Fields {
             PurchaseOrderId = "PurchaseOrderId",
             CustomerId = "CustomerId",
@@ -1002,10 +1042,10 @@ declare namespace Serene_Web_App.Inventory {
         const localTextPrefix = "Inventory.Supplier";
         const lookupKey = "Inventory.Supplier";
         function getLookup(): Q.Lookup<SupplierRow>;
-        const deletePermission = "Administration:SuppliersModify";
-        const insertPermission = "Administration:SuppliersAdd";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:SuppliersModify";
+        const deletePermission = "Administration:Admin";
+        const insertPermission = "Administration:Admin";
+        const readPermission = "Administration:User";
+        const updatePermission = "User:SuppliersAdm";
         const enum Fields {
             SupplierId = "SupplierId",
             Name = "Name",
@@ -1234,6 +1274,7 @@ declare namespace Serene_Web_App.Administration {
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
+        protected getDeletePermission(): string;
         protected form: UserForm;
         constructor();
         protected getToolbarButtons(): Serenity.ToolButton[];
@@ -1250,6 +1291,7 @@ declare namespace Serene_Web_App.Administration {
         protected getIsActiveProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getInsertPermission(): string;
         constructor(container: JQuery);
         protected getDefaultSortBy(): UserRow.Fields[];
     }
@@ -1616,10 +1658,13 @@ declare namespace Serene_Web_App.Inventory {
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
+        protected getReadPermission(): string;
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
-        protected form: CustomerForm;
+        protected form: Administration.UserForm;
+        constructor();
+        protected getToolbarButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Serene_Web_App.Inventory {
@@ -1627,10 +1672,15 @@ declare namespace Serene_Web_App.Inventory {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CustomerDialog;
         protected getIdProperty(): string;
-        protected getInsertPermission(): string;
+        protected getIsActiveProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getReadPermission(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
         constructor(container: JQuery);
+        protected getDefaultSortBy(): CustomerRow.Fields[];
     }
 }
 declare namespace Serene_Web_App.Inventory {

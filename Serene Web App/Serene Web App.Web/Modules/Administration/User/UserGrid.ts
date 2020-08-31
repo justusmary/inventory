@@ -8,6 +8,7 @@
         protected getIsActiveProperty() { return UserRow.isActiveProperty; }
         protected getLocalTextPrefix() { return UserRow.localTextPrefix; }
         protected getService() { return UserService.baseUrl; }
+        protected getInsertPermission() { return UserRow.insertPermission; }
 
         constructor(container: JQuery) {
             super(container);

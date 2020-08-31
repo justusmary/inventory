@@ -1,16 +1,13 @@
 ﻿namespace Serene_Web_App.Administration {
     declare namespace PermissionKeys {
         export const General = "Administration:General";
+        export const SharedAdmin = "Administration:SharedAdmin";
+        export const User = "Administration:User";
+        export const Admin = "Administration:Admin";
         export const Security = "Administration:Security";
         export const Translation = "Administration:Translation";
-        export const Suppliers = "Administration:Suppliers";
-        export const SuppliersAdd = "Administration:SuppliersAdd";
-        export const SuppliersMod = "Administration:SuppliersModify";
-        export const SupplierAdmin = "Administrator:SuppliersAdm";
-        export const Customer = "Administrator:Customer";
-        export const CustomerAdmin = "Administrator:CustomerAdm";
-        export const Store = "Administrator:Store";
-        export const StoreAdmin = "Administrator:StoreAdm";
-        export const StoreHQ = "Administrator:StoreHQ";
+        export const Supplier = "User:Supplier";
+        export const SupplierAdmin = "User:SuppliersAdm";
+        export const Customer = "User:Customer";
     }
 }

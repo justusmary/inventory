@@ -8,15 +8,21 @@ namespace Serene_Web_App.Inventory.Columns
     using System.ComponentModel;
     using System.Collections.Generic;
     using System.IO;
+    using Serene_Web_App.Administration.Entities;
 
     [ColumnsScript("Inventory.Customer")]
-    [BasedOnRow(typeof(Entities.CustomerRow), CheckNames = true)]
+    [BasedOnRow(typeof(UserRow), CheckNames = true)]
     public class CustomerColumns
     {
-        [RowIndexFormatter, EditLink, DisplayName("Db.Shared.RecordId"), AlignCenter]
-        public Int32 CustomerId { get; set; }
-        [EditLink]
-        public String Name { get; set; }
+        [RowIndexFormatter, EditLink, AlignCenter, Width(55)]
+        public String UserId { get; set; }
+        [EditLink, Width(150)]
+        public String Username { get; set; }
+        [Width(150)]
+        public String DisplayName { get; set; }
+        [Width(250)]
+        public String Email { get; set; }
+        [Width(100)]
         public String Phone { get; set; }
         public String Address { get; set; }
     }

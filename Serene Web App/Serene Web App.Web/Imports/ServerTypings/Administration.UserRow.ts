@@ -32,10 +32,10 @@
         export function getLookup(): Q.Lookup<UserRow> {
             return Q.getLookup<UserRow>('Administration.User');
         }
-        export const deletePermission = 'Administration:Security';
-        export const insertPermission = 'Administration:Security';
-        export const readPermission = 'Administration:Security';
-        export const updatePermission = 'Administration:Security';
+        export const deletePermission = 'Administration:Admin';
+        export const insertPermission = 'Administration:SharedAdmin';
+        export const readPermission = 'Administration:User';
+        export const updatePermission = 'Administration:User';
 
         export declare const enum Fields {
             UserId = "UserId",

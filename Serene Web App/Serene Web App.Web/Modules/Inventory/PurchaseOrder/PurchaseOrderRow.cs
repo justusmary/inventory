@@ -16,7 +16,7 @@ namespace Serene_Web_App.Inventory.Entities
     [DisplayName("Purchase Order"), InstanceName("Purchase Order")]
     [ReadPermission(PermissionKeys.Customer)]
     [InsertPermission(PermissionKeys.Customer)]
-    [ModifyPermission(PermissionKeys.CustomerAdmin)]
+    [ModifyPermission(PermissionKeys.Admin)]
     public sealed class PurchaseOrderRow : Row, IIdRow
     {
         [DisplayName("Purchase Order Id"), Identity]

@@ -29,7 +29,7 @@ namespace Serene_Web_App.Inventory.Scripts
                     new Criteria(fld.SupplierId) != "" &
                     new Criteria(fld.SupplierId).IsNotNull());
 
-            if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+            if (!Authorization.HasPermission(PermissionKeys.Admin) && Authorization.HasPermission(PermissionKeys.Supplier))
             {
                 AddProductOrderFilter(query);
             }

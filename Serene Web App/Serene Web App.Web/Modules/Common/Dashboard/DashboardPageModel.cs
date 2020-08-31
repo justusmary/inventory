@@ -47,7 +47,7 @@ namespace Serene_Web_App.Common
             {
                 using (var connection = SqlConnections.NewFor<CustomerRow>())
                 {
-                    return connection.List<CustomerRow>().Count;
+                    return new CustomerRepository().List(connection, new ListRequest()).TotalCount;
                 }
             }
             set { }

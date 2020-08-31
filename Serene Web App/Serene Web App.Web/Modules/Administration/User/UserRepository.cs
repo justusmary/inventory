@@ -280,13 +280,10 @@ namespace Serene_Web_App.Administration.Repositories
                 base.PrepareQuery(query);
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                /*
-                if (!Authorization.HasPermission(PermissionKeys.Suppliers))
-                    query.Where(fld.SupplierId == user.SupplierId);
-                */
+                
                 if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
                     query.Where(fld.SupplierId == user.SupplierId);
-                else if (!Authorization.HasPermission(PermissionKeys.Supplier))
+                else if (!Authorization.HasPermission(PermissionKeys.Admin))
                     query.Where(fld.UserId == user.UserId);
             }
         }
@@ -297,15 +294,10 @@ namespace Serene_Web_App.Administration.Repositories
 
                 var user = (UserDefinition)Authorization.UserDefinition;
 
-                if (typeof(Row) == typeof(CustomerRow))
-                    query.Where(fld.UserId == user.UserId);
-
-                else if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
+                if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
                     query.Where(fld.SupplierId == user.SupplierId);
-                else if (!Authorization.HasPermission(PermissionKeys.Supplier) || !Authorization.HasPermission(PermissionKeys.Customer))
+                else if (!Authorization.HasPermission(PermissionKeys.Admin))
                     query.Where(fld.UserId == user.UserId);
-
-
             }
         }
     }

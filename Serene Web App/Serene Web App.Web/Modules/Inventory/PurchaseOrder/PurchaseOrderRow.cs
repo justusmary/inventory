@@ -34,8 +34,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.Amount[this] = value; }
         }
 
-        [HideOnInsert(true), Insertable(false)]
-        [LookupEditor(typeof(UserRow)), Updatable(false)]
+        [HideOnInsert(true), HideOnUpdate(true), Insertable(false), Updatable(false)]
         [DisplayName("Customer"), NotNull, ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jCustomer"), TextualField("CustomerName")]
         public Int32? CustomerId
         {
@@ -43,6 +42,7 @@ namespace Serene_Web_App.Inventory.Entities
             set { Fields.CustomerId[this] = value; }
         }
 
+        [Insertable(false), Updatable(false), HideOnInsert(true)]
         [DisplayName("Customer Name"), Expression("jCustomer.[DisplayName]")]
         public String CustomerName
         {

@@ -34,8 +34,8 @@
         }
         export const deletePermission = 'Administration:Security';
         export const insertPermission = 'Administration:Admin';
-        export const readPermission = 'User:Customer';
-        export const updatePermission = 'User:Customer';
+        export const readPermission = 'Administration:Admin';
+        export const updatePermission = 'Administration:Admin';
 
         export declare const enum Fields {
             UserId = "UserId",

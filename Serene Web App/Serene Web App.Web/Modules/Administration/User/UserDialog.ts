@@ -9,6 +9,7 @@
         protected getLocalTextPrefix() { return UserRow.localTextPrefix; }
         protected getNameProperty() { return UserRow.nameProperty; }
         protected getService() { return UserService.baseUrl; }
+        protected getInserPermission() { return UserRow.insertPermission; }
         protected getDeletePermission() { return UserRow.deletePermission; }
 
         protected form = new UserForm(this.idPrefix);
@@ -31,7 +32,7 @@
         {
             let buttons = super.getToolbarButtons();
 
-            if (Authorization.hasPermission(RoleRow.readPermission)) {
+            if (Authorization.hasPermission(UserRoleRow.readPermission)) {
                 buttons.push({
                     title: Q.text('Site.UserDialog.EditRolesButton'),
                     cssClass: 'edit-roles-button',

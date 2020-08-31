@@ -9,8 +9,8 @@ namespace Serene_Web_App.Administration.Entities
 
     [ConnectionKey("Default"), Module("Administration"), TableName("UserRoles")]
     [DisplayName("UserRoles"), InstanceName("UserRoles")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.Admin)]
+    [ModifyPermission(PermissionKeys.Admin)]
     public sealed class UserRoleRow : Row, IIdRow
     {
         [DisplayName("User Role Id"), Identity]

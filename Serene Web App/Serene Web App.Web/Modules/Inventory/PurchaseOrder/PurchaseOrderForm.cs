@@ -16,6 +16,7 @@ namespace Serene_Web_App.Inventory.Forms
         [Tab("General")]
         [Category("Order Summary")]
         public Int32 CustomerId { get; set; }
+        public String CustomerName { get; set; }
         public Decimal Amount { get; set; }
 
         [Category("Order Items")]

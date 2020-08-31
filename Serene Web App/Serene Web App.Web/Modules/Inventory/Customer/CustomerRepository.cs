@@ -250,43 +250,22 @@ namespace Serene_Web_App.Inventory.Repositories
             return CalculateHash(password, salt);
         }
 
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow>
-        {
-            protected override void ValidateRequest()
-            {
-                base.ValidateRequest();
-
-                var user = (UserDefinition)Authorization.UserDefinition;
-                if (Row.UserId != user.SupplierId)
-                    Authorization.ValidatePermission(PermissionKeys.Admin);
-            }
-        }
-
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow>
-        {
-            protected override void ValidateRequest()
-            {
-                base.ValidateRequest();
-
-                var user = (UserDefinition)Authorization.UserDefinition;
-                if (Row.UserId != user.UserId)
-                    Authorization.ValidatePermission(PermissionKeys.Admin);
-            }
-        }
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
         {
             protected override void PrepareQuery(SqlQuery query)
             {
                 base.PrepareQuery(query);
 
-                var user = (UserDefinition)Authorization.UserDefinition;
-
-                if (!Authorization.HasPermission(PermissionKeys.Admin))
-                    query.Where(fld.UserId == user.UserId);
-                else
-                {
-                    query.Where(fld.UserId == user.UserId);
-                }
+                query
+                .Where(fld.UserId
+                .In(query.SubQuery()
+                .From(urole_fld).Select(urole_fld.UserId)
+                .Where(urole_fld.RoleId
+                .In(query.SubQuery()
+                .From(role_fld).Select(role_fld.RoleId)
+                .Where(role_fld.RoleName == "Customer")))));
             }
         }
         private class MyListHandler : ListRequestHandler<MyRow>
@@ -295,24 +274,14 @@ namespace Serene_Web_App.Inventory.Repositories
             {
                 base.ApplyFilters(query);
 
-                var user = (UserDefinition)Authorization.UserDefinition;
-
-                if (!Authorization.HasPermission(PermissionKeys.Admin))
-                    query.Where(fld.UserId == user.UserId);
-                else
-                {
-                    Int32 role_id;
-                    using (var connection = SqlConnections.NewFor<SupplierRow>())
-                    {
-                        role_id = connection.First<RoleRow>(new Criteria("RoleName") == "Customer").RoleId.GetValueOrDefault();
-                    }
-
-                    query
-                    .Where(fld.UserId
-                    .In(query.SubQuery()
-                    .From(urole_fld).Select(urole_fld.UserId)
-                    .Where(role_fld.RoleId == role_id)));
-                }
+                query
+                .Where(fld.UserId
+                .In(query.SubQuery()
+                .From(urole_fld).Select(urole_fld.UserId)
+                .Where(urole_fld.RoleId
+                .In(query.SubQuery()
+                .From(role_fld).Select(role_fld.RoleId)
+                .Where(role_fld.RoleName == "Customer")))));
 
             }
         }

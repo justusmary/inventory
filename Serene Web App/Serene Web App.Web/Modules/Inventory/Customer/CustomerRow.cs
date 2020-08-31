@@ -14,9 +14,9 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[dbo].[Users]")]
     [DisplayName("Customer"), InstanceName("Customer")]
-    [ReadPermission(PermissionKeys.Customer)]
+    [ReadPermission(PermissionKeys.Admin)]
     [InsertPermission(PermissionKeys.Admin)]
-    [ModifyPermission(PermissionKeys.Customer)]
+    [ModifyPermission(PermissionKeys.Admin)]
     [DeletePermission(PermissionKeys.Security)]
     [LookupScript("Inventory.Customer")]
 

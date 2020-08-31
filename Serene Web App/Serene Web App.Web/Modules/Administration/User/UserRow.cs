@@ -15,7 +15,7 @@ namespace Serene_Web_App.Administration.Entities
     [InsertPermission(PermissionKeys.SharedAdmin)]
     [DeletePermission(PermissionKeys.Admin)]
     [LookupScript(Permission = PermissionKeys.Security)]
-    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, ICustomerRow
+    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity]
         public Int32? UserId
@@ -125,7 +125,7 @@ namespace Serene_Web_App.Administration.Entities
             set { Fields.Phone[this] = value; }
         }
 
-        [DisplayName("Address"), Size(1000)]
+        [DisplayName("Address"), NotNull, Size(1000)]
         public String Address
         {
             get { return Fields.Address[this]; }
@@ -145,11 +145,6 @@ namespace Serene_Web_App.Administration.Entities
         Int16Field IIsActiveRow.IsActiveField
         {
             get { return Fields.IsActive; }
-        }
-
-        public Int32Field UserIdField
-        {
-            get { return Fields.UserId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

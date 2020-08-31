@@ -8,6 +8,7 @@ namespace Serene_Web_App.Inventory {
         protected getIdProperty() { return ProductRow.idProperty; }
         protected getLocalTextPrefix() { return ProductRow.localTextPrefix; }
         protected getService() { return ProductService.baseUrl; }
+        protected getInsertPermission() { return ProductRow.insertPermission; }
 
         constructor(container: JQuery) {
             super(container);

@@ -4,6 +4,7 @@ using Serene_Web_App.Inventory.Repositories;
 using Serenity.Data;
 using Serenity.Services;
 using Serene_Web_App.Administration;
+using Serene_Web_App.Inventory;
 
 namespace Serene_Web_App.Common
 {
@@ -35,7 +36,7 @@ namespace Serene_Web_App.Common
             {
                 using (var connection = SqlConnections.NewFor<PurchaseOrderRow>())
                 {
-                    return connection.List<PurchaseOrderRow>().Count;
+                    return new PurchaseOrderRepository().List(connection, new PurchaseOrderListRequest()).TotalCount;
                 }
             }
             set { }

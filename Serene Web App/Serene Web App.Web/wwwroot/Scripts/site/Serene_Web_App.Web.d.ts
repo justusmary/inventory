@@ -1835,6 +1835,7 @@ declare namespace Serene_Web_App.Inventory {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getInsertPermission(): string;
         constructor(container: JQuery);
         protected getGridCanLoad(): boolean;
         private _supplierID;

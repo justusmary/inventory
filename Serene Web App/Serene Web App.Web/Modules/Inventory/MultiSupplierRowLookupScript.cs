@@ -21,7 +21,7 @@ namespace Serene_Web_App.Inventory.Scripts
         protected override void PrepareQuery(SqlQuery query)
         {
             base.PrepareQuery(query);
-            if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+            if (!Authorization.HasPermission(PermissionKeys.Admin) && Authorization.HasPermission(PermissionKeys.Supplier))
             {
                 AddProductSupplierFilter(query);
             }

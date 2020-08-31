@@ -9,8 +9,8 @@ namespace Serene_Web_App.Administration.Entities
 
     [ConnectionKey("Default"), Module("Administration"), TableName("UserPermissions")]
     [DisplayName("UserPermissions"), InstanceName("UserPermissions")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.SharedAdmin)]
+    [ModifyPermission(PermissionKeys.SharedAdmin)]
     public sealed class UserPermissionRow : Row, IIdRow, INameRow
     {
         [DisplayName("User Permission Id"), Identity]

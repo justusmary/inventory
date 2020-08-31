@@ -9,6 +9,7 @@
         protected getLocalTextPrefix() { return UserRow.localTextPrefix; }
         protected getNameProperty() { return UserRow.nameProperty; }
         protected getService() { return UserService.baseUrl; }
+        protected getDeletePermission() { return UserRow.deletePermission; }
 
         protected form = new UserForm(this.idPrefix);
 
@@ -30,31 +31,33 @@
         {
             let buttons = super.getToolbarButtons();
 
-            buttons.push({
-                title: Q.text('Site.UserDialog.EditRolesButton'),
-                cssClass: 'edit-roles-button',
-                icon: 'fa-users text-blue',
-                onClick: () =>
-                {
-                    new UserRoleDialog({
-                        userID: this.entity.UserId,
-                        username: this.entity.Username
-                    }).dialogOpen();
-                }
-            });
+            if (Authorization.hasPermission(RoleRow.readPermission)) {
+                buttons.push({
+                    title: Q.text('Site.UserDialog.EditRolesButton'),
+                    cssClass: 'edit-roles-button',
+                    icon: 'fa-users text-blue',
+                    onClick: () => {
+                        new UserRoleDialog({
+                            userID: this.entity.UserId,
+                            username: this.entity.Username
+                        }).dialogOpen();
+                    }
+                });
+            }
 
-            buttons.push({
-                title: Q.text('Site.UserDialog.EditPermissionsButton'),
-                cssClass: 'edit-permissions-button',
-                icon: 'fa-lock text-green',
-                onClick: () =>
-                {
-                    new UserPermissionDialog({
-                        userID: this.entity.UserId,
-                        username: this.entity.Username
-                    }).dialogOpen();
-                }
-            });
+            if (Authorization.hasPermission(UserPermissionRow.readPermission)) {
+                buttons.push({
+                    title: Q.text('Site.UserDialog.EditPermissionsButton'),
+                    cssClass: 'edit-permissions-button',
+                    icon: 'fa-lock text-green',
+                    onClick: () => {
+                        new UserPermissionDialog({
+                            userID: this.entity.UserId,
+                            username: this.entity.Username
+                        }).dialogOpen();
+                    }
+                });
+            }
 
             return buttons;
         }

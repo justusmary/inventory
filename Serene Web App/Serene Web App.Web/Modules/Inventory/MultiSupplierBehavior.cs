@@ -27,7 +27,7 @@ namespace Serene_Web_App
             SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
-            if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+            if (!Authorization.HasPermission(PermissionKeys.Admin) && Authorization.HasPermission(PermissionKeys.Supplier))
                 query.Where(fldSupplierId == user.SupplierId);
         }
 
@@ -35,7 +35,7 @@ namespace Serene_Web_App
             SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
-            if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+            if (!Authorization.HasPermission(PermissionKeys.Admin) && Authorization.HasPermission(PermissionKeys.Supplier))
                 query.Where(fldSupplierId == user.SupplierId);
         }
 
@@ -53,7 +53,7 @@ namespace Serene_Web_App
             {
                 var user = (UserDefinition)Authorization.UserDefinition;
                 if (fldSupplierId[handler.Old] != fldSupplierId[handler.Row])
-                    Authorization.ValidatePermission(PermissionKeys.Suppliers);
+                    Authorization.ValidatePermission(PermissionKeys.Admin);
             }
         }
 
@@ -62,7 +62,7 @@ namespace Serene_Web_App
             var user = (UserDefinition)Authorization.UserDefinition;
             if (fldSupplierId[handler.Row] != user.SupplierId)
                 Authorization.ValidatePermission(
-                    PermissionKeys.Suppliers);
+                    PermissionKeys.Admin);
         }
 
         public void OnAfterDelete(IDeleteRequestHandler handler) { }

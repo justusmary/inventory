@@ -13,9 +13,9 @@ namespace Serene_Web_App.Inventory.Entities
 
     [ConnectionKey("Default"), Module("Inventory"), TableName("[inv].[ProductOrder]")]
     [DisplayName("Product Order"), InstanceName("Product Order")]
-    [ReadPermission(PermissionKeys.Store)]
-    [InsertPermission(PermissionKeys.StoreHQ)]
-    [ModifyPermission(PermissionKeys.StoreAdmin)]
+    [ReadPermission(PermissionKeys.Supplier)]
+    [InsertPermission(PermissionKeys.Admin)]
+    [ModifyPermission(PermissionKeys.Admin)]
     [LookupScript("Inventory.ProductOrder", LookupType = typeof(MultiSupplierRowLookupScript<>))]
     public sealed class ProductOrderRow : Row, IIdRow, IMultiSupplierRow
     {

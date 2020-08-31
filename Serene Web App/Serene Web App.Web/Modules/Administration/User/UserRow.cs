@@ -10,10 +10,12 @@ namespace Serene_Web_App.Administration.Entities
 
     [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
     [DisplayName("Users"), InstanceName("User")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.User)]
+    [ModifyPermission(PermissionKeys.User)]
+    [InsertPermission(PermissionKeys.SharedAdmin)]
+    [DeletePermission(PermissionKeys.Admin)]
     [LookupScript(Permission = PermissionKeys.Security)]
-    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
+    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow, ICustomerRow
     {
         [DisplayName("User Id"), Identity]
         public Int32? UserId
@@ -102,7 +104,7 @@ namespace Serene_Web_App.Administration.Entities
 
         [DisplayName("Supplier"), ForeignKey("[inv].Supplier", "SupplierId"), LeftJoin("s")]
         [LookupEditor(typeof(SupplierRow))]
-        [ReadPermission(PermissionKeys.Suppliers)]
+        [ReadPermission(PermissionKeys.Admin)]
         public Int32? SupplierId
         {
             get { return Fields.SupplierId[this]; }
@@ -143,6 +145,11 @@ namespace Serene_Web_App.Administration.Entities
         Int16Field IIsActiveRow.IsActiveField
         {
             get { return Fields.IsActive; }
+        }
+
+        public Int32Field UserIdField
+        {
+            get { return Fields.UserId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

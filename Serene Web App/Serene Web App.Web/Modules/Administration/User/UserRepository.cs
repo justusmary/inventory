@@ -1,6 +1,7 @@
 ﻿
 namespace Serene_Web_App.Administration.Repositories
 {
+    using Serene_Web_App.Inventory.Entities;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;
@@ -197,7 +198,7 @@ namespace Serene_Web_App.Administration.Repositories
 
                     var user = (UserDefinition)Authorization.UserDefinition;
                     if (Old.SupplierId != user.SupplierId)
-                        Authorization.ValidatePermission(PermissionKeys.Suppliers);
+                        Authorization.ValidatePermission(PermissionKeys.Admin);
                 }
 
                 if (IsCreate)
@@ -217,7 +218,7 @@ namespace Serene_Web_App.Administration.Repositories
                     Row.Source = "site";
                     Row.IsActive = Row.IsActive ?? 1;
 
-                    if (!Authorization.HasPermission(Administration.PermissionKeys.Suppliers) || Row.SupplierId == null)
+                    if ((!Authorization.HasPermission(PermissionKeys.Admin) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))) //  || Row.SupplierId == null)
                     {
                         Row.SupplierId = ((UserDefinition)Authorization.UserDefinition)
                             .SupplierId;
@@ -258,8 +259,8 @@ namespace Serene_Web_App.Administration.Repositories
                 base.ValidateRequest();
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                if (Row.SupplierId != user.SupplierId)
-                    Authorization.ValidatePermission(PermissionKeys.Suppliers);
+                if (Row.UserId != user.SupplierId)
+                    Authorization.ValidatePermission(PermissionKeys.Admin);
             }
         }
 
@@ -269,8 +270,8 @@ namespace Serene_Web_App.Administration.Repositories
                 base.ValidateRequest();
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                if (Row.SupplierId != user.SupplierId)
-                    Authorization.ValidatePermission(PermissionKeys.Suppliers);
+                if (Row.UserId != user.UserId)
+                    Authorization.ValidatePermission(PermissionKeys.Admin);
             }
         }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> {
@@ -279,8 +280,14 @@ namespace Serene_Web_App.Administration.Repositories
                 base.PrepareQuery(query);
 
                 var user = (UserDefinition)Authorization.UserDefinition;
+                /*
                 if (!Authorization.HasPermission(PermissionKeys.Suppliers))
                     query.Where(fld.SupplierId == user.SupplierId);
+                */
+                if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
+                    query.Where(fld.SupplierId == user.SupplierId);
+                else if (!Authorization.HasPermission(PermissionKeys.Supplier))
+                    query.Where(fld.UserId == user.UserId);
             }
         }
         private class MyListHandler : ListRequestHandler<MyRow> {
@@ -289,8 +296,16 @@ namespace Serene_Web_App.Administration.Repositories
                 base.ApplyFilters(query);
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                if (!Authorization.HasPermission(PermissionKeys.Suppliers))
+
+                if (typeof(Row) == typeof(CustomerRow))
+                    query.Where(fld.UserId == user.UserId);
+
+                else if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
                     query.Where(fld.SupplierId == user.SupplierId);
+                else if (!Authorization.HasPermission(PermissionKeys.Supplier) || !Authorization.HasPermission(PermissionKeys.Customer))
+                    query.Where(fld.UserId == user.UserId);
+
+
             }
         }
     }

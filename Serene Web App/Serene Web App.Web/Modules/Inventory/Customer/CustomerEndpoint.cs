@@ -1,4 +1,7 @@
 ﻿
+using Serene_Web_App.Administration.Entities;
+using Serene_Web_App.Administration.Repositories;
+
 namespace Serene_Web_App.Inventory.Endpoints
 {
     using Serenity;
@@ -6,8 +9,8 @@ namespace Serene_Web_App.Inventory.Endpoints
     using Serenity.Services;
     using System.Data;
     using Microsoft.AspNetCore.Mvc;
-    using MyRepository = Repositories.CustomerRepository;
-    using MyRow = Entities.CustomerRow;
+    using MyRepository = UserRepository;
+    using MyRow = UserRow;
 
     [Route("Services/Inventory/Customer/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
@@ -38,8 +41,9 @@ namespace Serene_Web_App.Inventory.Endpoints
         }
 
         [HttpPost]
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, UserListRequest request)
         {
+            request.IsCustomer = true;
             return new MyRepository().List(connection, request);
         }
     }

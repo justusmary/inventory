@@ -432,7 +432,7 @@ declare namespace Serene_Web_App.Administration {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Inventory.UserListRequest, onSuccess?: (response: Serenity.ListResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Administration/User/Create",
             Update = "Administration/User/Update",
@@ -605,71 +605,13 @@ declare namespace Serene_Web_App.Inventory {
     }
 }
 declare namespace Serene_Web_App.Inventory {
-    interface CustomerRow {
-        UserId?: number;
-        Username?: string;
-        Source?: string;
-        PasswordHash?: string;
-        PasswordSalt?: string;
-        DisplayName?: string;
-        Email?: string;
-        UserImage?: string;
-        LastDirectoryUpdate?: string;
-        IsActive?: number;
-        SupplierId?: number;
-        SupplierName?: string;
-        Phone?: string;
-        Address?: string;
-        Password?: string;
-        PasswordConfirm?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-    }
-    namespace CustomerRow {
-        const idProperty = "UserId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Username";
-        const localTextPrefix = "Inventory.Customer";
-        const lookupKey = "Inventory.Customer";
-        function getLookup(): Q.Lookup<CustomerRow>;
-        const deletePermission = "Administration:Security";
-        const insertPermission = "Administration:Admin";
-        const readPermission = "Administration:Admin";
-        const updatePermission = "Administration:Admin";
-        const enum Fields {
-            UserId = "UserId",
-            Username = "Username",
-            Source = "Source",
-            PasswordHash = "PasswordHash",
-            PasswordSalt = "PasswordSalt",
-            DisplayName = "DisplayName",
-            Email = "Email",
-            UserImage = "UserImage",
-            LastDirectoryUpdate = "LastDirectoryUpdate",
-            IsActive = "IsActive",
-            SupplierId = "SupplierId",
-            SupplierName = "SupplierName",
-            Phone = "Phone",
-            Address = "Address",
-            Password = "Password",
-            PasswordConfirm = "PasswordConfirm",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate"
-        }
-    }
-}
-declare namespace Serene_Web_App.Inventory {
     namespace CustomerService {
         const baseUrl = "Inventory/Customer";
-        function Create(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveRequest<Administration.UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<Administration.UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: UserListRequest, onSuccess?: (response: Serenity.ListResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Inventory/Customer/Create",
             Update = "Inventory/Customer/Update",
@@ -1077,6 +1019,11 @@ declare namespace Serene_Web_App.Inventory {
             Retrieve = "Inventory/Supplier/Retrieve",
             List = "Inventory/Supplier/List"
         }
+    }
+}
+declare namespace Serene_Web_App.Inventory {
+    interface UserListRequest extends Serenity.ListRequest {
+        IsCustomer?: boolean;
     }
 }
 declare namespace Serene_Web_App.Membership {
@@ -1654,7 +1601,7 @@ declare namespace Serene_Web_App.Inventory {
     }
 }
 declare namespace Serene_Web_App.Inventory {
-    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
+    class CustomerDialog extends Serenity.EntityDialog<Serene_Web_App.Administration.UserRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -1664,13 +1611,13 @@ declare namespace Serene_Web_App.Inventory {
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
-        protected form: Administration.UserForm;
+        protected form: CustomerForm;
         constructor();
         protected getToolbarButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace Serene_Web_App.Inventory {
-    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
+    class CustomerGrid extends Serenity.EntityGrid<Serene_Web_App.Administration.UserRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CustomerDialog;
         protected getIdProperty(): string;
@@ -1682,7 +1629,7 @@ declare namespace Serene_Web_App.Inventory {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         constructor(container: JQuery);
-        protected getDefaultSortBy(): CustomerRow.Fields[];
+        protected getDefaultSortBy(): Administration.UserRow.Fields[];
     }
 }
 declare namespace Serene_Web_App.Inventory {

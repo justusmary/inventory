@@ -15,6 +15,7 @@ namespace Serene_Web_App.Administration.Endpoints
     using Microsoft.AspNetCore.Mvc;
     using MyRepository = Repositories.UserRepository;
     using MyRow = Entities.UserRow;
+    using Serene_Web_App.Inventory;
 
     [Route("Services/Administration/User/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
@@ -49,7 +50,8 @@ namespace Serene_Web_App.Administration.Endpoints
             return new MyRepository().Retrieve(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        [HttpPost]
+        public ListResponse<MyRow> List(IDbConnection connection, UserListRequest request)
         {
             return new MyRepository().List(connection, request);
         }

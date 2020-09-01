@@ -5,6 +5,8 @@ using Serenity.Data;
 using Serenity.Services;
 using Serene_Web_App.Administration;
 using Serene_Web_App.Inventory;
+using Serene_Web_App.Administration.Repositories;
+using Serene_Web_App.Administration.Entities;
 
 namespace Serene_Web_App.Common
 {
@@ -46,9 +48,12 @@ namespace Serene_Web_App.Common
         {
             get
             {
-                using (var connection = SqlConnections.NewFor<CustomerRow>())
+                var request = new UserListRequest();
+                request.IsCustomer = true;
+
+                using (var connection = SqlConnections.NewFor<UserRow>())
                 {
-                    return new CustomerRepository().List(connection, new ListRequest()).TotalCount;
+                    return new UserRepository().List(connection, request).TotalCount;
                 }
             }
             set { }

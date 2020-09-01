@@ -1,6 +1,8 @@
 ﻿
 namespace Serene_Web_App.Administration.Repositories
 {
+    using Serene_Web_App.Administration.Entities;
+    using Serene_Web_App.Inventory;
     using Serene_Web_App.Inventory.Entities;
     using Serenity;
     using Serenity.Abstractions;
@@ -55,7 +57,7 @@ namespace Serene_Web_App.Administration.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, UserListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -264,7 +266,8 @@ namespace Serene_Web_App.Administration.Repositories
             }
         }
 
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> {
+        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow>
+        {
             protected override void ValidateRequest()
             {
                 base.ValidateRequest();
@@ -274,30 +277,46 @@ namespace Serene_Web_App.Administration.Repositories
                     Authorization.ValidatePermission(PermissionKeys.Admin);
             }
         }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> {
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
+        {
             protected override void PrepareQuery(SqlQuery query)
             {
                 base.PrepareQuery(query);
 
                 var user = (UserDefinition)Authorization.UserDefinition;
-                
+
                 if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
                     query.Where(fld.SupplierId == user.SupplierId);
                 else if (!Authorization.HasPermission(PermissionKeys.Admin))
                     query.Where(fld.UserId == user.UserId);
             }
         }
-        private class MyListHandler : ListRequestHandler<MyRow> {
+
+        private class MyListHandler : ListRequestHandler<MyRow, UserListRequest>
+        {
+            private static UserRoleRow.RowFields urole_fld { get { return UserRoleRow.Fields; } }
+            private static RoleRow.RowFields role_fld { get { return RoleRow.Fields; } }
             protected override void ApplyFilters(SqlQuery query)
             {
                 base.ApplyFilters(query);
-
                 var user = (UserDefinition)Authorization.UserDefinition;
 
-                if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
+                if (Request.IsCustomer == true)
+                {
+                    query
+                    .Where(fld.UserId
+                    .In(query.SubQuery()
+                    .From(urole_fld).Select(urole_fld.UserId)
+                    .Where(urole_fld.RoleId
+                    .In(query.SubQuery()
+                    .From(role_fld).Select(role_fld.RoleId)
+                    .Where(role_fld.RoleName == "Customer")))));
+                }
+                else if (!Authorization.HasPermission(PermissionKeys.Customer) && Authorization.HasPermission(PermissionKeys.SupplierAdmin))
                     query.Where(fld.SupplierId == user.SupplierId);
                 else if (!Authorization.HasPermission(PermissionKeys.Admin))
                     query.Where(fld.UserId == user.UserId);
+
             }
         }
     }

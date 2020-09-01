@@ -1,10 +1,11 @@
 ﻿namespace Serene_Web_App.Inventory.Forms
 {
+    using Serene_Web_App.Administration.Entities;
     using Serenity.ComponentModel;
     using System;
 
     [FormScript("Inventory.Customer")]
-    [BasedOnRow(typeof(Entities.CustomerRow), CheckNames = true)]
+    [BasedOnRow(typeof(UserRow), CheckNames = true)]
     public class CustomerForm
     {
         public String Username { get; set; }

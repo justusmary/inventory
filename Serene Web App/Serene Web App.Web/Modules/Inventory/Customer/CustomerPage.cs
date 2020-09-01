@@ -4,8 +4,9 @@ namespace Serene_Web_App.Inventory.Pages
     using Serenity;
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
+    using Serene_Web_App.Administration;
 
-    [PageAuthorize(typeof(Entities.CustomerRow))]
+    [PageAuthorize(PermissionKeys.Admin)]
     public class CustomerController : Controller
     {
         [Route("Inventory/Customer")]

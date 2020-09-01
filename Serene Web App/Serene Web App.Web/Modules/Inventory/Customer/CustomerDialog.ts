@@ -2,18 +2,18 @@
 namespace Serene_Web_App.Inventory {
     
     @Serenity.Decorators.registerClass()
-    export class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
-        protected getFormKey() { return CustomerForm.formKey; }
-        protected getIdProperty() { return CustomerRow.idProperty; }
-        protected getLocalTextPrefix() { return CustomerRow.localTextPrefix; }
-        protected getNameProperty() { return CustomerRow.nameProperty; }
+    export class CustomerDialog extends Serenity.EntityDialog<Serene_Web_App.Administration.UserRow, any> {
+        protected getFormKey() { return Serene_Web_App.Administration.UserForm.formKey; }
+        protected getIdProperty() { return Serene_Web_App.Administration.UserRow.idProperty; }
+        protected getLocalTextPrefix() { return Serene_Web_App.Administration.UserRow.localTextPrefix; }
+        protected getNameProperty() { return Serene_Web_App.Administration.UserRow.nameProperty; }
         protected getService() { return CustomerService.baseUrl; }
-        protected getReadPermission() { return CustomerRow.readPermission; }
-        protected getDeletePermission() { return CustomerRow.deletePermission; }
-        protected getInsertPermission() { return CustomerRow.insertPermission; }
-        protected getUpdatePermission() { return CustomerRow.updatePermission; }
+        protected getReadPermission() { return "Administration:Admin"; }
+        protected getDeletePermission() { return "Administration:Admin"; }
+        protected getInsertPermission() { return "Administration:Admin"; }
+        protected getUpdatePermission() { return "Administration:Admin"; }
 
-        protected form = new Serene_Web_App.Administration.UserForm(this.idPrefix);
+        protected form = new CustomerForm(this.idPrefix);
 
         constructor() {
             super();

@@ -12,14 +12,15 @@ namespace Serene_Web_App.Migrations.DefaultDB
             Create.Table("OrderItem").InSchema("inv")
                 .WithColumn("OrderItemId").AsInt32()
                     .Identity().PrimaryKey().NotNullable()
-                .WithColumn("PurchaseOrderId").AsInt32().NotNullable()
+                .WithColumn("PurchaseOrderId").AsInt32().Nullable()
                     .ForeignKey("FK_OrderItem_PurchaseOrderId", "inv", "PurchaseOrder", "PurchaseOrderId")
-                .WithColumn("ProductId").AsInt32().NotNullable()
+                .WithColumn("ProductId").AsInt32().Nullable()
                     .ForeignKey("FK_PurchaseOrder_ProductId", "inv", "Product", "ProductId")
-                .WithColumn("Quantity").AsInt32().NotNullable()
-                .WithColumn("UnitPrice").AsDecimal().NotNullable()
-                .WithColumn("Date").AsDateTime().Nullable();
-                
+                .WithColumn("Quantity").AsInt32().Nullable()
+                .WithColumn("UnitPrice").AsDecimal().Nullable()
+                .WithColumn("Date").AsDateTime().Nullable()
+                    .WithDefault(SystemMethods.CurrentDateTime);
+
         }
 
         public override void Down()

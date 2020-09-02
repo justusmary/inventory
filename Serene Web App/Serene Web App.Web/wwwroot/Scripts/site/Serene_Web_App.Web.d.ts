@@ -432,7 +432,7 @@ declare namespace Serene_Web_App.Administration {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Inventory.UserListRequest, onSuccess?: (response: Serenity.ListResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Web.Modules.Administration.User.UserListRequest, onSuccess?: (response: Serenity.ListResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Administration/User/Create",
             Update = "Administration/User/Update",
@@ -611,7 +611,7 @@ declare namespace Serene_Web_App.Inventory {
         function Update(request: Serenity.SaveRequest<Administration.UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: UserListRequest, onSuccess?: (response: Serenity.ListResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Web.Modules.Administration.User.UserListRequest, onSuccess?: (response: Serenity.ListResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Inventory/Customer/Create",
             Update = "Inventory/Customer/Update",
@@ -1021,11 +1021,6 @@ declare namespace Serene_Web_App.Inventory {
         }
     }
 }
-declare namespace Serene_Web_App.Inventory {
-    interface UserListRequest extends Serenity.ListRequest {
-        IsCustomer?: boolean;
-    }
-}
 declare namespace Serene_Web_App.Membership {
     interface ChangePasswordForm {
         OldPassword: Serenity.PasswordEditor;
@@ -1127,6 +1122,11 @@ declare namespace Serene_Web_App {
     }
 }
 declare namespace Serene_Web_App.Texts {
+}
+declare namespace Serene_Web_App.Web.Modules.Administration.User {
+    interface UserListRequest extends Serenity.ListRequest {
+        IsCustomer?: boolean;
+    }
 }
 declare namespace Serene_Web_App.Web.Modules.Inventory {
 }

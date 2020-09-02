@@ -11,6 +11,7 @@ namespace Serene_Web_App.Inventory.Endpoints
     using Microsoft.AspNetCore.Mvc;
     using MyRepository = UserRepository;
     using MyRow = UserRow;
+    using Serene_Web_App.Web.Modules.Administration.User;
 
     [Route("Services/Inventory/Customer/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

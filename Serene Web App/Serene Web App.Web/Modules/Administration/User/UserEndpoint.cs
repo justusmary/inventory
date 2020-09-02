@@ -16,6 +16,7 @@ namespace Serene_Web_App.Administration.Endpoints
     using MyRepository = Repositories.UserRepository;
     using MyRow = Entities.UserRow;
     using Serene_Web_App.Inventory;
+    using Serene_Web_App.Web.Modules.Administration.User;
 
     [Route("Services/Administration/User/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]

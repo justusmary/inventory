@@ -6,7 +6,7 @@
         export declare function Update(request: Serenity.SaveRequest<Administration.UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        export declare function List(request: UserListRequest, onSuccess?: (response: Serenity.ListResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function List(request: Web.Modules.Administration.User.UserListRequest, onSuccess?: (response: Serenity.ListResponse<Administration.UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export declare const enum Methods {
             Create = "Inventory/Customer/Create",

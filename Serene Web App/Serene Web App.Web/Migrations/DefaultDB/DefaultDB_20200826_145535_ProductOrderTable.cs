@@ -19,6 +19,7 @@ namespace Serene_Web_App.Migrations.DefaultDB
                 .WithColumn("Quantity").AsInt32().NotNullable()
                 .WithColumn("TotalAmount").AsDecimal().NotNullable()
                 .WithColumn("Date").AsDateTime().NotNullable()
+                    .WithDefault(SystemMethods.CurrentDateTime)
                 .WithColumn("Fulfilled").AsBoolean().WithDefaultValue(false)
                 .WithColumn("InsertUserId").AsInt32().NotNullable()
                     .ForeignKey("FK_ProductOrderInsert_UserId", "dbo", "Users", "UserId")

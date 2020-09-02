@@ -4,6 +4,7 @@ namespace Serene_Web_App.Administration.Repositories
     using Serene_Web_App.Administration.Entities;
     using Serene_Web_App.Inventory;
     using Serene_Web_App.Inventory.Entities;
+    using Serene_Web_App.Web.Modules.Administration.User;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;

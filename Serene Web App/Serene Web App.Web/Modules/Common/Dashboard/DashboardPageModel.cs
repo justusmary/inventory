@@ -7,6 +7,7 @@ using Serene_Web_App.Administration;
 using Serene_Web_App.Inventory;
 using Serene_Web_App.Administration.Repositories;
 using Serene_Web_App.Administration.Entities;
+using Serene_Web_App.Web.Modules.Administration.User;
 
 namespace Serene_Web_App.Common
 {

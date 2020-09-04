@@ -10,6 +10,7 @@ namespace Serene_Web_App.Inventory.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
+    using System.Linq;
     using MyRow = Entities.PurchaseOrderRow;
 
     public class PurchaseOrderRepository
@@ -88,7 +89,20 @@ namespace Serene_Web_App.Inventory.Repositories
                 }
             }
         }
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> {
+            protected override void OnBeforeDelete()
+            {
+                base.OnBeforeDelete();
+                using (var connection = SqlConnections.NewFor<OrderItemRow>())
+                {
+                    var data = connection.List<OrderItemRow>().Where(x => x.PurchaseOrderId == Row.PurchaseOrderId).ToList();
+                    foreach (var item in data)
+                    {
+                        connection.DeleteById<OrderItemRow>(item.OrderItemId);
+                    }
+                }
+            }
+        }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow, PurchaseOrderListRequest> {
             protected override void ApplyFilters(SqlQuery query)

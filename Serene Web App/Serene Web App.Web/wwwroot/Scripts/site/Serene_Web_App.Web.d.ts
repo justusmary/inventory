@@ -1710,7 +1710,18 @@ declare namespace Serene_Web_App.Inventory {
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        private pendingChanges;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+        protected onViewProcessData(response: any): Serenity.ListResponse<ProductOrderRow>;
+        private numericInputFormatter;
+        private boolInputFormatter;
+        private selectFormatter;
+        private getEffectiveValue;
+        protected getColumns(): Slick.Column[];
+        private inputsChange;
+        private setSaveButtonState;
+        private saveClick;
     }
 }
 declare namespace Serene_Web_App.Inventory {

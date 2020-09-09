@@ -71,8 +71,7 @@ namespace Serene_Web_App.Inventory {
 
             return "<input type='checkbox' class='" + klass +
                 "' data-field='" + column.field + "'" +
-                Q.attrEncode(state) +
-                " value='" + Q.attrEncode(value) + "'/>";
+                Q.attrEncode(state) + "/>";
         }
 
         private selectFormatter(ctx: Slick.FormatterContext, idField: string, lookup: Q.Lookup<any>) {
@@ -160,7 +159,7 @@ namespace Serene_Web_App.Inventory {
                 value = i;
             }
             else if (input.hasClass("bool")) {
-                text == "true" ? value = "false" : value = "true"
+                input.prop(":checked") ? value = "false" : value = "true"
             }
             else
                 value = text;

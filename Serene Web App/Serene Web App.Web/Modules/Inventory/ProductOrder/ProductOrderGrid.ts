@@ -159,7 +159,7 @@ namespace Serene_Web_App.Inventory {
                 value = i;
             }
             else if (input.hasClass("bool")) {
-                input.is(":checked") ? value = "false" : value = "true"
+                input.is(":checked") ? value = "true" : value = "false"
             }
             else
                 value = text;
